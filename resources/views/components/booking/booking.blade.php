@@ -1698,9 +1698,7 @@
             const nextButtonForm = document.querySelector(".btn-next-form");
 
             const timeSlots = [
-                "09:00am", "09:30am", "10:00am", "10:30am", "11:00am", "11:30am", "12:00pm", "12:30pm",
-                "01:00pm", "01:30pm", "02:00pm", "02:30pm", "03:00pm", "03:30pm", "4:00pm", "4:30pm",
-                "05:00pm"
+                "09:00am-10:30am", "10:30am-12:00pm", "12:00pm-01:30pm", "1:30pm-03:00pm", "03:00pm-4:30pm", "4:30pm-06:00pm", "06:00pm-07:30pm"
             ];
 
             function timeToMinutes(time) {
@@ -1734,56 +1732,16 @@
             }
 
             function displayTimeSlots() {
-                // console.log('function is running');
-                let timezone = document.querySelector('.timeZoneCheck:checked')?.value;
-                let currentDateTime = new Date();
-                let selectedDateTime = new Date(selectedDate.dataset.date);
-                // console.log(selectedDateTime.toDateString() !== currentDateTime.toDateString());
-
-                const startTime = new Date(currentDateTime.toLocaleDateString('en-US'));
-                const endTime = new Date(currentDateTime.toLocaleDateString('en-US'));
-                if(timezone == 0){
-                startTime.setHours(9, 0, 0); // Set to 09:00 AM
-                endTime.setHours(17, 0, 0); // Set to 05:00 PM
-                } else if(timezone == '+3'){ //PT
-                    startTime.setHours(12, 0, 0);
-                    endTime.setHours(20, 0, 0);
-                } else if(timezone == '+3'){ //ET
-                    startTime.setHours(12, 0, 0); // Set to 09:00 AM
-                    endTime.setHours(20, 0, 0); // Set to 05:00 PM
-                } else if(timezone == '+2'){ // CT
-                    startTime.setHours(11, 0, 0);
-                    endTime.setHours(19, 0, 0);
-                } else if(timezone == '+1'){ // MT
-                    startTime.setHours(10, 0, 0);
-                    endTime.setHours(18, 0, 0);
-                }
-                // console.log('startTime',startTime,'endTime', endTime);
-
-                // console.log('current datetime',currentDateTime);
-
-                const utcOffset = parseInt(timezone);
-                console.log(utcOffset);
-
-                // const timeZoneDateTime = new Date(currentDateTime.getTime() + (utcOffset * 3600000));
-                // console.log('timezone timedate',timeZoneDateTime);
-                // Time Slots Script
                 const timeSlotsContainer = document.querySelector("#timeSlotContainerDIv");
                 timeSlotsContainer.innerHTML = "";
 
-                while (startTime <= endTime) {
+                timeSlots.forEach(i=>{
                     let button = document.createElement("button");
                     button.type = "button";
                     button.className = "btn custom-btn-outline waves-effect timeBtn";
-                    button.textContent = formatTime(startTime);
-                    if (startTime < currentDateTime && selectedDateTime.toDateString() == currentDateTime.toDateString()) {
-                        button.disabled = true;
-                    }
-                    button.addEventListener("click", () => handleTimeSelection(button));
+                    button.textContent = i;
                     timeSlotsContainer.appendChild(button);
-                    // Increment by 30 minutes
-                    startTime.setMinutes(startTime.getMinutes() + 30);
-                }
+                })
 
                 previousButton.style.pointerEvents = currentIndex === 0 ? "none" : "auto";
             }
