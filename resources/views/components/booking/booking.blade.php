@@ -672,11 +672,14 @@
             border: 1px solid #9d9d9d;
         }
 
-        /*MOBILE DEVICES CSS START*/
 
-        @media only screen and (min-width: 992px) and (max-width: 1199px),
-        only screen and (min-width: 768px) and (max-width: 991px),
-        (max-width: 767px) {
+
+        /*For Mobiles*/
+
+        @media only screen and (min-width: 360px) and (max-width: 740px),
+        only screen and (min-width: 412px) and (max-width: 915px),
+        only screen and (min-width: 767px) and (max-width: 991px) {
+
             .ribbon {
                 width: 339px;
                 font-size: 22px;
@@ -718,6 +721,7 @@
                 margin-bottom: 6px;
             }
         }
+
     </style>
 
 </head>
@@ -761,13 +765,13 @@
 
                             <div class="bs-stepper-header border-end">
                                 <a href="javascript:void(0);" class="app-brand-link">
-                                    <img src="{{ asset('assets/abr/logo.png') }}" width="250">
+                                    <img src="{{ asset('assets/logo/logo.png') }}" width="150">
                                 </a>
-                                <h4 class="text-center m-0 pt-5 text-uppercase" style="font-weight: bold;">Visit Us
-                                    Online At:</h4>
-                                <a class="text-center" href="https://weincentivize.com/">
-                                    <h5>www.weincentivize.com</h5>
-                                </a>
+{{--                                <h4 class="text-center m-0 pt-5 text-uppercase" style="font-weight: bold;">Visit Us--}}
+{{--                                    Online At:</h4>--}}
+{{--                                <a class="text-center" href="https://weincentivize.com/">--}}
+{{--                                    <h5>www.weincentivize.com</h5>--}}
+{{--                                </a>--}}
                                 <div class="step" data-target="#personal-details">
                                     <button type="button" class="step-trigger">
                                         <span class="bs-stepper-circle"><i class="fa-solid fa-calendar-days"></i></span>
