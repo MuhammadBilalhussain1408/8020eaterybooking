@@ -89,7 +89,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px;
-            background: #058283;
+            background: #e1612e;
             color: white;
         }
 
@@ -363,7 +363,7 @@
         }
 
         .bs-stepper .step.active .bs-stepper-circle {
-            background-color: #058283;
+            background-color: #3fbf50;
         }
 
         .light-style .bs-stepper .bs-stepper-header .bs-stepper-title,
@@ -385,8 +385,8 @@
         }
 
         .btn-black:hover {
-            background-color: #058283 !important;
-            border-color: #058283;
+            background-color: #3fbf50 !important;
+            border-color: #3fbf50;
             color: white;
         }
 
@@ -403,23 +403,23 @@
             background: transparent;
             font-size: 20px;
             font-weight: 600;
-            padding: 14px 62px 14px 62px;
-            width: 136px;
+            padding: 14px 45px 14px 45px;
+            width: 287px;
             margin-top: 6px;
             margin-bottom: 6px;
         }
 
         .custom-btn-outline:hover {
             color: #ffffff;
-            border-color: #058283;
-            background: #058283;
+            border-color: #e1612e;
+            background: #e1612e;
             font-weight: 600;
         }
 
         .btn-green {
             color: #fff !important;
-            background-color: #058283 !important;
-            border-color: #058283 !important;
+            background-color: #e1612e !important;
+            border-color: #e1612e !important;
         }
 
         .btn-green:hover {
@@ -578,7 +578,7 @@
         }
 
         .selected-date {
-            background-color: #058283;
+            background-color: #e1612e;
             color: #fff !important;
             border-radius: 50%;
         }
@@ -780,15 +780,15 @@
                                         </span>
                                     </button>
                                 </div>
-                                <div class="line"></div>
-                                <div class="step" data-target="#time-zone">
-                                    <button type="button" class="step-trigger">
-                                        <span class="bs-stepper-circle"><i class="fa-solid fa-globe"></i></span>
-                                        <span class="bs-stepper-label">
-                                            <span class="bs-stepper-title">Time Zone</span>
-                                        </span>
-                                    </button>
-                                </div>
+{{--                                <div class="line"></div>--}}
+{{--                                <div class="step" data-target="#time-zone">--}}
+{{--                                    <button type="button" class="step-trigger">--}}
+{{--                                        <span class="bs-stepper-circle"><i class="fa-solid fa-globe"></i></span>--}}
+{{--                                        <span class="bs-stepper-label">--}}
+{{--                                            <span class="bs-stepper-title">Time Zone</span>--}}
+{{--                                        </span>--}}
+{{--                                    </button>--}}
+{{--                                </div>--}}
                                 <div class="line"></div>
                                 <div class="step" data-target="#property-details">
                                     <button type="button" class="step-trigger">
@@ -875,98 +875,98 @@
                                         </div>
                                     </div>
 
-                                    <!-- Time Zone -->
-                                    <div id="time-zone" class="content">
-                                        <div class="row g-6">
-                                            <h4 class="text-black">Select Time Zone</h4>
-                                            <div class="col-md-6 mb-md-0 mb-5">
-                                                <div class="form-check custom-option custom-option-icon">
-                                                    <label class="form-check-label custom-option-content"
-                                                        for="zone1">
-                                                        <span class="custom-option-body">
-                                                            <i class="fa-solid fa-globe" style="color: black;"></i>
-                                                            <span class="custom-option-title"> Eastern Standard Time
-                                                                (EST) </span>
-                                                            <h5>
-                                                                Select this option if you are located in the Eastern
-                                                                Standard Time (EST) zone
-                                                            </h5>
-                                                        </span>
-                                                        <input onclick="check(this);" class="form-check-input timeZoneCheck" type="checkbox"
-                                                            value="+3" id="zone1" />
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-md-0 mb-5">
-                                                <div class="form-check custom-option custom-option-icon">
-                                                    <label class="form-check-label custom-option-content"
-                                                        for="zone2">
-                                                        <span class="custom-option-body">
-                                                            <i class="fa-solid fa-globe" style="color: black;"></i>
-                                                            <span class="custom-option-title"> Central Standard Time
-                                                                (CST) </span>
-                                                            <h5>
-                                                                Select this option if you are located in the Central
-                                                                Standard Time (CST) zone
-                                                            </h5>
-                                                        </span>
-                                                        <input onclick="check(this);" class="form-check-input timeZoneCheck" type="checkbox"
-                                                            value="+2" id="zone2" />
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-md-0 mb-5">
-                                                <div class="form-check custom-option custom-option-icon">
-                                                    <label class="form-check-label custom-option-content"
-                                                        for="zone3">
-                                                        <span class="custom-option-body">
-                                                            <i class="fa-solid fa-globe" style="color: black;"></i>
-                                                            <span class="custom-option-title"> Mountain Standard Time
-                                                                (MST) </span>
-                                                            <h5>
-                                                                Select this option if you are located in the Mountain
-                                                                Standard Time (MST) zone
-                                                            </h5>
-                                                        </span>
-                                                        <input onclick="check(this);" class="form-check-input timeZoneCheck" type="checkbox"
-                                                            value="+1" id="zone3" />
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-md-0 mb-5">
-                                                <div class="form-check custom-option custom-option-icon">
-                                                    <label class="form-check-label custom-option-content"
-                                                        for="zone4">
-                                                        <span class="custom-option-body">
-                                                            <i class="fa-solid fa-globe" style="color: black;"></i>
-                                                            <span class="custom-option-title"> Pacific Standard Time
-                                                                (PST) </span>
-                                                            <h5>
-                                                                Select this option if you are located in the Pacific
-                                                                Standard Time (PST) zone
-                                                            </h5>
-                                                        </span>
-                                                        <input onclick="check(this);" class="form-check-input timeZoneCheck" type="checkbox"
-                                                            value="0" id="zone4" />
-                                                    </label>
-                                                </div>
-                                            </div>
+{{--                                    <!-- Time Zone -->--}}
+{{--                                    <div id="time-zone" class="content">--}}
+{{--                                        <div class="row g-6">--}}
+{{--                                            <h4 class="text-black">Select Time Zone</h4>--}}
+{{--                                            <div class="col-md-6 mb-md-0 mb-5">--}}
+{{--                                                <div class="form-check custom-option custom-option-icon">--}}
+{{--                                                    <label class="form-check-label custom-option-content"--}}
+{{--                                                        for="zone1">--}}
+{{--                                                        <span class="custom-option-body">--}}
+{{--                                                            <i class="fa-solid fa-globe" style="color: black;"></i>--}}
+{{--                                                            <span class="custom-option-title"> Eastern Standard Time--}}
+{{--                                                                (EST) </span>--}}
+{{--                                                            <h5>--}}
+{{--                                                                Select this option if you are located in the Eastern--}}
+{{--                                                                Standard Time (EST) zone--}}
+{{--                                                            </h5>--}}
+{{--                                                        </span>--}}
+{{--                                                        <input onclick="check(this);" class="form-check-input timeZoneCheck" type="checkbox"--}}
+{{--                                                            value="+3" id="zone1" />--}}
+{{--                                                    </label>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="col-md-6 mb-md-0 mb-5">--}}
+{{--                                                <div class="form-check custom-option custom-option-icon">--}}
+{{--                                                    <label class="form-check-label custom-option-content"--}}
+{{--                                                        for="zone2">--}}
+{{--                                                        <span class="custom-option-body">--}}
+{{--                                                            <i class="fa-solid fa-globe" style="color: black;"></i>--}}
+{{--                                                            <span class="custom-option-title"> Central Standard Time--}}
+{{--                                                                (CST) </span>--}}
+{{--                                                            <h5>--}}
+{{--                                                                Select this option if you are located in the Central--}}
+{{--                                                                Standard Time (CST) zone--}}
+{{--                                                            </h5>--}}
+{{--                                                        </span>--}}
+{{--                                                        <input onclick="check(this);" class="form-check-input timeZoneCheck" type="checkbox"--}}
+{{--                                                            value="+2" id="zone2" />--}}
+{{--                                                    </label>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="col-md-6 mb-md-0 mb-5">--}}
+{{--                                                <div class="form-check custom-option custom-option-icon">--}}
+{{--                                                    <label class="form-check-label custom-option-content"--}}
+{{--                                                        for="zone3">--}}
+{{--                                                        <span class="custom-option-body">--}}
+{{--                                                            <i class="fa-solid fa-globe" style="color: black;"></i>--}}
+{{--                                                            <span class="custom-option-title"> Mountain Standard Time--}}
+{{--                                                                (MST) </span>--}}
+{{--                                                            <h5>--}}
+{{--                                                                Select this option if you are located in the Mountain--}}
+{{--                                                                Standard Time (MST) zone--}}
+{{--                                                            </h5>--}}
+{{--                                                        </span>--}}
+{{--                                                        <input onclick="check(this);" class="form-check-input timeZoneCheck" type="checkbox"--}}
+{{--                                                            value="+1" id="zone3" />--}}
+{{--                                                    </label>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="col-md-6 mb-md-0 mb-5">--}}
+{{--                                                <div class="form-check custom-option custom-option-icon">--}}
+{{--                                                    <label class="form-check-label custom-option-content"--}}
+{{--                                                        for="zone4">--}}
+{{--                                                        <span class="custom-option-body">--}}
+{{--                                                            <i class="fa-solid fa-globe" style="color: black;"></i>--}}
+{{--                                                            <span class="custom-option-title"> Pacific Standard Time--}}
+{{--                                                                (PST) </span>--}}
+{{--                                                            <h5>--}}
+{{--                                                                Select this option if you are located in the Pacific--}}
+{{--                                                                Standard Time (PST) zone--}}
+{{--                                                            </h5>--}}
+{{--                                                        </span>--}}
+{{--                                                        <input onclick="check(this);" class="form-check-input timeZoneCheck" type="checkbox"--}}
+{{--                                                            value="0" id="zone4" />--}}
+{{--                                                    </label>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
 
 
-                                            <div class="col-12 d-flex justify-content-between">
-                                                <button class="btn btn-black btn-prev nxt-prev-btn" type="button">
-                                                    <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button" class="btn btn-green btn-next nxt-prev-btn"
-                                                    id="timeZoneNextBtn" disabled>
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>
-                                                    <i class="ti ti-arrow-right ti-xs"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                            <div class="col-12 d-flex justify-content-between">--}}
+{{--                                                <button class="btn btn-black btn-prev nxt-prev-btn" type="button">--}}
+{{--                                                    <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>--}}
+{{--                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>--}}
+{{--                                                </button>--}}
+{{--                                                <button type="button" class="btn btn-green btn-next nxt-prev-btn"--}}
+{{--                                                    id="timeZoneNextBtn" disabled>--}}
+{{--                                                    <span--}}
+{{--                                                        class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>--}}
+{{--                                                    <i class="ti ti-arrow-right ti-xs"></i>--}}
+{{--                                                </button>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
 
                                     <!-- Time Format -->
                                     <div id="property-details" class="content">
@@ -977,100 +977,29 @@
                                                 <div class="d-flex gap-4 flex-wrap mt-4" id="timeSlotContainerDIv">
                                                     <button type="button"
                                                         class="btn custom-btn-outline waves-effect">
-                                                        12:00am
+                                                        8:00 AM - 9:30 AM
                                                     </button>
                                                     <button type="button"
                                                         class="btn custom-btn-outline waves-effect">
-                                                        12:30am
+                                                        10:00 AM - 11:30 AM
                                                     </button>
                                                     <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        1:00am
+                                                            class="btn custom-btn-outline waves-effect">
+                                                        12:00 PM - 1:30 PM
                                                     </button>
                                                     <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        1:30am
+                                                            class="btn custom-btn-outline waves-effect">
+                                                        2:00 PM - 3:30 PM
                                                     </button>
                                                     <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        2:00am
+                                                            class="btn custom-btn-outline waves-effect">
+                                                        4:00 PM - 5:30 PM
                                                     </button>
                                                     <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        2:30am
+                                                            class="btn custom-btn-outline waves-effect">
+                                                        6:00 PM - 7:30 PM
                                                     </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        3:00am
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        3:30am
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        4:00am
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        4:30am
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        5:00am
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        5:30am
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        6:00pm
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        6:30pm
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        7:00pm
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        7:30pm
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        8:00pm
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        8:30pm
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        9:00pm
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        9:30pm
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        10:00pm
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        10:30pm
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        11:00pm
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
-                                                        11:30pm
-                                                    </button>
+
                                                 </div>
                                             </div>
 
