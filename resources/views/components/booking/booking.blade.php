@@ -1698,7 +1698,7 @@
             const nextButtonForm = document.querySelector(".btn-next-form");
 
             const timeSlots = [
-                "09:00am-10:30am", "10:30am-12:00pm", "12:00pm-01:30pm", "1:30pm-03:00pm", "03:00pm-4:30pm", "4:30pm-06:00pm", "06:00pm-07:30pm"
+                "08:00am-09:30am", "10:00am-11:30pm", "12:00pm-01:30pm", "02:00pm-03:30pm", "04:00pm-5:30pm", "06:00pm-07:30pm"
             ];
 
             function timeToMinutes(time) {
