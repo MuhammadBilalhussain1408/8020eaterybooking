@@ -671,6 +671,77 @@
         .custom-option {
             border: 1px solid #9d9d9d;
         }
+        button.timeBtn {
+            text-transform: uppercase;
+        }
+
+        .countdown-label {
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            display: inline-block;
+            letter-spacing: 2px;
+            margin-top: 9px
+        }
+        #countdown{
+            box-shadow: 0 1px 2px 0 rgba(1, 1, 1, 0.4);
+            width: 200px;
+            height: 108px;
+            text-align: center;
+            background: #000000;
+            border-radius: 5px;
+            margin: auto;
+
+        }
+        #countdown #tiles{
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 0px #ccc;
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px 5px 0 0;
+            font-size: 30px;
+            font-weight: bold;
+            display: block;
+
+        }
+
+        .color-full {
+            background: #e1612e;
+        }
+        .color-half {
+            background: #ebc85d;
+        }
+        .color-empty {
+            background: #e5554e;
+        }
+
+        #countdown #tiles > span{
+            width: 70px;
+            max-width: 70px;
+
+            padding: 18px 0;
+            position: relative;
+        }
+
+        #countdown .labels{
+            width: 100%;
+            height: 25px;
+            text-align: center;
+            position: absolute;
+            bottom: 8px;
+        }
+
+        #countdown .labels li{
+            width: 102px;
+            font: bold 15px 'Droid Sans', Arial, sans-serif;
+            color: #f47321;
+            text-shadow: 1px 1px 0px #000;
+            text-align: center;
+            text-transform: uppercase;
+            display: inline-block;
+        }
 
 
 
@@ -780,15 +851,15 @@
                                         </span>
                                     </button>
                                 </div>
-{{--                                <div class="line"></div>--}}
-{{--                                <div class="step" data-target="#time-zone">--}}
-{{--                                    <button type="button" class="step-trigger">--}}
-{{--                                        <span class="bs-stepper-circle"><i class="fa-solid fa-globe"></i></span>--}}
-{{--                                        <span class="bs-stepper-label">--}}
-{{--                                            <span class="bs-stepper-title">Time Zone</span>--}}
-{{--                                        </span>--}}
-{{--                                    </button>--}}
-{{--                                </div>--}}
+                                <div class="line"></div>
+                                <div class="step" data-target="#time-zone">
+                                    <button type="button" class="step-trigger">
+                                        <span class="bs-stepper-circle"><i class="fa-solid fa-globe"></i></span>
+                                        <span class="bs-stepper-label">
+                                            <span class="bs-stepper-title">Room Selection</span>
+                                        </span>
+                                    </button>
+                                </div>
                                 <div class="line"></div>
                                 <div class="step" data-target="#property-details">
                                     <button type="button" class="step-trigger">
@@ -875,98 +946,75 @@
                                         </div>
                                     </div>
 
-{{--                                    <!-- Time Zone -->--}}
-{{--                                    <div id="time-zone" class="content">--}}
-{{--                                        <div class="row g-6">--}}
-{{--                                            <h4 class="text-black">Select Time Zone</h4>--}}
-{{--                                            <div class="col-md-6 mb-md-0 mb-5">--}}
-{{--                                                <div class="form-check custom-option custom-option-icon">--}}
-{{--                                                    <label class="form-check-label custom-option-content"--}}
-{{--                                                        for="zone1">--}}
-{{--                                                        <span class="custom-option-body">--}}
-{{--                                                            <i class="fa-solid fa-globe" style="color: black;"></i>--}}
-{{--                                                            <span class="custom-option-title"> Eastern Standard Time--}}
-{{--                                                                (EST) </span>--}}
-{{--                                                            <h5>--}}
-{{--                                                                Select this option if you are located in the Eastern--}}
-{{--                                                                Standard Time (EST) zone--}}
-{{--                                                            </h5>--}}
-{{--                                                        </span>--}}
-{{--                                                        <input onclick="check(this);" class="form-check-input timeZoneCheck" type="checkbox"--}}
-{{--                                                            value="+3" id="zone1" />--}}
-{{--                                                    </label>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="col-md-6 mb-md-0 mb-5">--}}
-{{--                                                <div class="form-check custom-option custom-option-icon">--}}
-{{--                                                    <label class="form-check-label custom-option-content"--}}
-{{--                                                        for="zone2">--}}
-{{--                                                        <span class="custom-option-body">--}}
-{{--                                                            <i class="fa-solid fa-globe" style="color: black;"></i>--}}
-{{--                                                            <span class="custom-option-title"> Central Standard Time--}}
-{{--                                                                (CST) </span>--}}
-{{--                                                            <h5>--}}
-{{--                                                                Select this option if you are located in the Central--}}
-{{--                                                                Standard Time (CST) zone--}}
-{{--                                                            </h5>--}}
-{{--                                                        </span>--}}
-{{--                                                        <input onclick="check(this);" class="form-check-input timeZoneCheck" type="checkbox"--}}
-{{--                                                            value="+2" id="zone2" />--}}
-{{--                                                    </label>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="col-md-6 mb-md-0 mb-5">--}}
-{{--                                                <div class="form-check custom-option custom-option-icon">--}}
-{{--                                                    <label class="form-check-label custom-option-content"--}}
-{{--                                                        for="zone3">--}}
-{{--                                                        <span class="custom-option-body">--}}
-{{--                                                            <i class="fa-solid fa-globe" style="color: black;"></i>--}}
-{{--                                                            <span class="custom-option-title"> Mountain Standard Time--}}
-{{--                                                                (MST) </span>--}}
-{{--                                                            <h5>--}}
-{{--                                                                Select this option if you are located in the Mountain--}}
-{{--                                                                Standard Time (MST) zone--}}
-{{--                                                            </h5>--}}
-{{--                                                        </span>--}}
-{{--                                                        <input onclick="check(this);" class="form-check-input timeZoneCheck" type="checkbox"--}}
-{{--                                                            value="+1" id="zone3" />--}}
-{{--                                                    </label>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="col-md-6 mb-md-0 mb-5">--}}
-{{--                                                <div class="form-check custom-option custom-option-icon">--}}
-{{--                                                    <label class="form-check-label custom-option-content"--}}
-{{--                                                        for="zone4">--}}
-{{--                                                        <span class="custom-option-body">--}}
-{{--                                                            <i class="fa-solid fa-globe" style="color: black;"></i>--}}
-{{--                                                            <span class="custom-option-title"> Pacific Standard Time--}}
-{{--                                                                (PST) </span>--}}
-{{--                                                            <h5>--}}
-{{--                                                                Select this option if you are located in the Pacific--}}
-{{--                                                                Standard Time (PST) zone--}}
-{{--                                                            </h5>--}}
-{{--                                                        </span>--}}
-{{--                                                        <input onclick="check(this);" class="form-check-input timeZoneCheck" type="checkbox"--}}
-{{--                                                            value="0" id="zone4" />--}}
-{{--                                                    </label>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
+                                    <!-- Time Zone -->
+                                    <div id="time-zone" class="content">
+                                        <div class="row g-6">
+                                            <h4 class="text-black">Select Room</h4>
+                                            <div class="col-md-6 mb-md-0 mb-5">
+                                                <div class="form-check custom-option custom-option-icon">
+                                                    <label class="form-check-label custom-option-content"
+                                                        for="Podcastroom">
+                                                        <span class="custom-option-body">
+                                                            <i class="fa-solid fa-globe" style="color: black;"></i>
+                                                            <span class="custom-option-title">
+                                                                Content Room Or Podcast Room
+                                                            </span>
+                                                            <h5>
+                                                                Room Available After:
+                                                                <input type="hidden" id="set-time" value="30"/>
+                                                                <div class="mt-2" id="countdown">
+                                                                  <div id='tiles' class="color-full"></div>
+                                                                  <div id ="left" class="countdown-label">Time Remaining</div>
+                                                                </div>
+                                                            </h5>
+                                                        </span>
+                                                        <input class="form-check-input"
+                                                               type="checkbox"
+                                                               value="Podcastroom"
+                                                               id="Podcastroom" />
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-md-0 mb-5">
+                                                <div class="form-check custom-option custom-option-icon">
+                                                    <label class="form-check-label custom-option-content"
+                                                        for="Conferenceroom">
+                                                        <span class="custom-option-body">
+                                                            <i class="fa-solid fa-globe" style="color: black;"></i>
+                                                            <span class="custom-option-title">
+                                                                Conference Room
+                                                            </span>
+                                                            <h5>
+                                                                Room Available After:
+                                                                <input type="hidden" id="set-time" value="30"/>
+                                                                <div class="mt-2" id="countdown">
+                                                                  <div id='tiles' class="color-full"></div>
+                                                                  <div id ="left" class="countdown-label">Time Remaining</div>
+                                                                </div>
+                                                            </h5>
+                                                        </span>
+                                                        <input class="form-check-input"
+                                                               type="checkbox"
+                                                               value="Conferenceroom"
+                                                               id="Conferenceroom" />
+                                                    </label>
+                                                </div>
+                                            </div>
 
-
-{{--                                            <div class="col-12 d-flex justify-content-between">--}}
-{{--                                                <button class="btn btn-black btn-prev nxt-prev-btn" type="button">--}}
-{{--                                                    <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>--}}
-{{--                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>--}}
-{{--                                                </button>--}}
-{{--                                                <button type="button" class="btn btn-green btn-next nxt-prev-btn"--}}
-{{--                                                    id="timeZoneNextBtn" disabled>--}}
-{{--                                                    <span--}}
-{{--                                                        class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>--}}
-{{--                                                    <i class="ti ti-arrow-right ti-xs"></i>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                            <div class="col-12 d-flex justify-content-between">
+                                                <button class="btn btn-black btn-prev nxt-prev-btn" type="button">
+                                                    <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>
+                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                </button>
+                                                <button type="button" class="btn btn-green btn-next nxt-prev-btn"
+                                                    id="timeZoneNextBtn" disabled>
+                                                    <span
+                                                        class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>
+                                                    <i class="ti ti-arrow-right ti-xs"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <!-- Time Format -->
                                     <div id="property-details" class="content">
@@ -2016,6 +2064,69 @@
             {
                 input.checked = true;
             }
+        }
+    </script>
+
+    <script>
+        var minutes = $( '#set-time' ).val();
+
+        var target_date = new Date().getTime() + ((minutes * 60 ) * 1000); // set the countdown date
+        var time_limit = ((minutes * 60 ) * 1000);
+        //set actual timer
+        setTimeout(
+            function()
+            {
+                document.getElementById("left").innerHTML = "Timer Stopped";
+            }, time_limit );
+
+        var days, hours, minutes, seconds; // variables for time units
+
+        var countdown = document.getElementById("tiles"); // get tag element
+
+        getCountdown();
+
+        setInterval(function () { getCountdown(); }, 1000);
+
+        function getCountdown(){
+
+            // find the amount of "seconds" between now and target
+            var current_date = new Date().getTime();
+            var seconds_left = (target_date - current_date) / 1000;
+
+            if ( seconds_left >= 0 ) {
+                console.log(time_limit);
+                if ( (seconds_left * 1000 ) < ( time_limit / 2 ) )  {
+                    $( '#tiles' ).removeClass('color-full');
+                    $( '#tiles' ).addClass('color-half');
+
+                }
+                if ( (seconds_left * 1000 ) < ( time_limit / 4 ) )  {
+                    $( '#tiles' ).removeClass('color-half');
+                    $( '#tiles' ).addClass('color-empty');
+                }
+
+                days = pad( parseInt(seconds_left / 86400) );
+                seconds_left = seconds_left % 86400;
+
+                hours = pad( parseInt(seconds_left / 3600) );
+                seconds_left = seconds_left % 3600;
+
+                minutes = pad( parseInt(seconds_left / 60) );
+                seconds = pad( parseInt( seconds_left % 60 ) );
+
+                // format countdown string + set tag value
+                countdown.innerHTML = "<span>" + hours + ":</span><span>" + minutes + ":</span><span>" + seconds + "</span>";
+
+
+
+            }
+
+
+
+        }
+
+        function pad(n) {
+            return (n < 10 ? '0' : '') + n;
         }
     </script>
 
