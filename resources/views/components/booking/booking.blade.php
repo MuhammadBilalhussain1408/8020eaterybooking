@@ -961,14 +961,14 @@
                                                             </span>
                                                             <h5>
                                                                 Room Available After:
-                                                                <input type="hidden" id="set-time" value="30"/>
+                                                                <input type="hidden" id="set-time" value="30" />
                                                                 <div class="mt-2" id="countdown">
                                                                   <div id='tiles' class="color-full"></div>
                                                                   <div id ="left" class="countdown-label">Time Remaining</div>
                                                                 </div>
                                                             </h5>
                                                         </span>
-                                                        <input class="form-check-input"
+                                                        <input class="form-check-input timeZoneCheck"
                                                                type="checkbox"
                                                                value="Podcastroom"
                                                                id="Podcastroom" />
@@ -993,7 +993,7 @@
                                                                 </div>
                                                             </h5>
                                                         </span>
-                                                        <input class="form-check-input"
+                                                        <input class="form-check-input timeZoneCheck"
                                                                type="checkbox"
                                                                value="Conferenceroom"
                                                                id="Conferenceroom" />
@@ -1024,27 +1024,27 @@
                                                 <h4 class="text-black">Select Time</h4>
                                                 <div class="d-flex gap-4 flex-wrap mt-4" id="timeSlotContainerDIv">
                                                     <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
+                                                        class="btn custom-btn-outline waves-effect timeBtn">
                                                         8:00 AM - 9:30 AM
                                                     </button>
                                                     <button type="button"
-                                                        class="btn custom-btn-outline waves-effect">
+                                                        class="btn custom-btn-outline waves-effect timeBtn">
                                                         10:00 AM - 11:30 AM
                                                     </button>
                                                     <button type="button"
-                                                            class="btn custom-btn-outline waves-effect">
+                                                            class="btn custom-btn-outline waves-effect timeBtn">
                                                         12:00 PM - 1:30 PM
                                                     </button>
                                                     <button type="button"
-                                                            class="btn custom-btn-outline waves-effect">
+                                                            class="btn custom-btn-outline waves-effect timeBtn">
                                                         2:00 PM - 3:30 PM
                                                     </button>
                                                     <button type="button"
-                                                            class="btn custom-btn-outline waves-effect">
+                                                            class="btn custom-btn-outline waves-effect timeBtn">
                                                         4:00 PM - 5:30 PM
                                                     </button>
                                                     <button type="button"
-                                                            class="btn custom-btn-outline waves-effect">
+                                                            class="btn custom-btn-outline waves-effect timeBtn">
                                                         6:00 PM - 7:30 PM
                                                     </button>
 
@@ -1917,16 +1917,16 @@
                 dateDiv.forEach(ele => {
                     // Add an onclick event listener
                     ele.addEventListener('click', function() {
-                        const selectedDate = ele.classList.contains('selected');
-                        if (selectedDate) {
+                        // const selectedDate = ele.classList.contains('selected');
+                        // if (selectedDate) {
                             let timeNextBtn = document.getElementById('timeNextBtn');
                             timeNextBtn.removeAttribute('disabled')
                             // updateCurrentIndex(true);
-                        }
+                        // }
                     });
                 })
             }
-
+            enableDateBtn()
             let timeZoneCurrentIndex;
             function selectTimeZone() {
                 // let timeZones = document.querySelectorAll('.timeZoneCheck');
