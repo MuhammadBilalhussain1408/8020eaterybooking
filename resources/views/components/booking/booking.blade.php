@@ -852,20 +852,20 @@
                                     </button>
                                 </div>
                                 <div class="line"></div>
-                                <div class="step" data-target="#time-zone">
-                                    <button type="button" class="step-trigger">
-                                        <span class="bs-stepper-circle"><i class="fa-solid fa-globe"></i></span>
-                                        <span class="bs-stepper-label">
-                                            <span class="bs-stepper-title">Room Selection</span>
-                                        </span>
-                                    </button>
-                                </div>
-                                <div class="line"></div>
                                 <div class="step" data-target="#property-details">
                                     <button type="button" class="step-trigger">
                                         <span class="bs-stepper-circle"><i class="fa-solid fa-clock"></i></span>
                                         <span class="bs-stepper-label">
                                             <span class="bs-stepper-title">Time</span>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="line"></div>
+                                <div class="step" data-target="#time-zone">
+                                    <button type="button" class="step-trigger">
+                                        <span class="bs-stepper-circle"><i class="fa-solid fa-globe"></i></span>
+                                        <span class="bs-stepper-label">
+                                            <span class="bs-stepper-title">Room Selection</span>
                                         </span>
                                     </button>
                                 </div>
@@ -937,92 +937,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Time Zone -->
-                                    <div id="time-zone" class="content">
-                                        <div class="row g-6">
-                                            <h4 class="text-black">Select Room</h4>
-                                            <div class="col-md-6 mb-md-0 mb-5">
-                                                <div class="form-check custom-option custom-option-icon">
-                                                    <label class="form-check-label custom-option-content"
-                                                        for="Podcastroom">
-                                                        <span class="custom-option-body">
-                                                            <i class="fa-solid fa-globe" style="color: black;"></i>
-                                                            <span class="custom-option-title">
-                                                                Content Room Or Podcast Room
-                                                            </span>
-                                                            <h5 class="fw-semibold text-black">
-                                                                Room is Not Available: <span><i class="fa-solid fa-square-xmark" style="color: #e91e63;"></i></span>
-                                                                <input type="hidden" id="set-time" value="30" />
-                                                                <div class="mt-2" id="countdown">
-                                                                  <div id='tiles' class="color-full"></div>
-                                                                  <div id ="left" class="countdown-label">Time Remaining</div>
-                                                                </div>
-                                                            </h5>
-                                                        </span>
-                                                        <input class="form-check-input timeZoneCheck"
-                                                               type="checkbox"
-                                                               value="Podcastroom"
-                                                               id="Podcastroom" />
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-md-0 mb-5">
-                                                <div class="form-check custom-option custom-option-icon">
-                                                    <label class="form-check-label custom-option-content"
-                                                        for="Conferenceroom">
-                                                        <span class="custom-option-body">
-                                                            <i class="fa-solid fa-globe" style="color: black;"></i>
-                                                            <span class="custom-option-title">
-                                                                Conference Room
-                                                            </span>
-                                                            <h5 class="fw-semibold text-black">
-                                                                Room is Available <span><i class="fa-solid fa-square-check" style="color: green;"></i></span>
-                                                                <input type="hidden" id="set-time" value="30"/>
-                                                                <div class="mt-2" id="countdown">
-                                                                  <div id="tiles" class="color-full">
-                                                                      <span>00:</span>
-                                                                      <span>00:</span>
-                                                                      <span>00</span>
-                                                                  </div>
-                                                                  <div id ="left" class="countdown-label">Time Remaining</div>
-                                                                </div>
-                                                            </h5>
-                                                        </span>
-                                                        <input class="form-check-input timeZoneCheck"
-                                                               type="checkbox"
-                                                               value="Conferenceroom"
-                                                               id="Conferenceroom" />
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 pt-3">
-                                                <label class="form-label" for="plPodcast">Podcast Name</label>
-                                                <input type="text" id="plPodcast" name="plPodcast"
-                                                       class="form-control" placeholder="Enter Your Podcast Name"
-                                                       required />
-                                            </div>
-                                            <div class="col-sm-6 pt-3">
-                                                <label class="form-label" for="plShortDescription">Short Description</label>
-                                                <input type="text" id="plShortDescription" name="plShortDescription"
-                                                       class="form-control" placeholder="Short description of what your podcast is about"
-                                                       required />
-                                            </div>
-
-                                            <div class="col-12 d-flex justify-content-between">
-                                                <button class="btn btn-black btn-prev nxt-prev-btn" type="button">
-                                                    <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button" class="btn btn-green btn-next nxt-prev-btn"
-                                                    id="timeZoneNextBtn" disabled>
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>
-                                                    <i class="ti ti-arrow-right ti-xs"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <!-- Time Format -->
                                     <div id="property-details" class="content">
                                         <div class="row g-6">
@@ -1072,6 +986,92 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- Time Zone -->
+                                    <div id="time-zone" class="content">
+                                            <div class="row g-6">
+                                                <h4 class="text-black">Select Room</h4>
+                                                <div class="col-md-6 mb-md-0 mb-5">
+                                                    <div class="form-check custom-option custom-option-icon">
+                                                        <label class="form-check-label custom-option-content"
+                                                               for="Podcastroom">
+                                                        <span class="custom-option-body">
+                                                            <i class="fa-solid fa-globe" style="color: black;"></i>
+                                                            <span class="custom-option-title">
+                                                                Content Room Or Podcast Room
+                                                            </span>
+                                                            <h5 class="fw-semibold text-black">
+                                                                Room is Not Available: <span><i class="fa-solid fa-square-xmark" style="color: #e91e63;"></i></span>
+                                                                <input type="hidden" id="set-time" value="30" />
+                                                                <div class="mt-2" id="countdown">
+                                                                  <div id='tiles' class="color-full"></div>
+                                                                  <div id ="left" class="countdown-label">Time Remaining</div>
+                                                                </div>
+                                                            </h5>
+                                                        </span>
+                                                            <input class="form-check-input timeZoneCheck"
+                                                                   type="checkbox"
+                                                                   value="Podcastroom"
+                                                                   id="Podcastroom" />
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-md-0 mb-5">
+                                                    <div class="form-check custom-option custom-option-icon">
+                                                        <label class="form-check-label custom-option-content"
+                                                               for="Conferenceroom">
+                                                        <span class="custom-option-body">
+                                                            <i class="fa-solid fa-globe" style="color: black;"></i>
+                                                            <span class="custom-option-title">
+                                                                Conference Room
+                                                            </span>
+                                                            <h5 class="fw-semibold text-black">
+                                                                Room is Available <span><i class="fa-solid fa-square-check" style="color: green;"></i></span>
+                                                                <input type="hidden" id="set-time" value="30"/>
+                                                                <div class="mt-2" id="countdown">
+                                                                  <div id="tiles" class="color-full">
+                                                                      <span>00:</span>
+                                                                      <span>00:</span>
+                                                                      <span>00</span>
+                                                                  </div>
+                                                                  <div id ="left" class="countdown-label">Time Remaining</div>
+                                                                </div>
+                                                            </h5>
+                                                        </span>
+                                                            <input class="form-check-input timeZoneCheck"
+                                                                   type="checkbox"
+                                                                   value="Conferenceroom"
+                                                                   id="Conferenceroom" />
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 pt-3">
+                                                    <label class="form-label" for="plPodcast">Podcast Name</label>
+                                                    <input type="text" id="plPodcast" name="plPodcast"
+                                                           class="form-control" placeholder="Enter Your Podcast Name"
+                                                           required />
+                                                </div>
+                                                <div class="col-sm-6 pt-3">
+                                                    <label class="form-label" for="plShortDescription">Short Description</label>
+                                                    <input type="text" id="plShortDescription" name="plShortDescription"
+                                                           class="form-control" placeholder="Short description of what your podcast is about"
+                                                           required />
+                                                </div>
+
+                                                <div class="col-12 d-flex justify-content-between">
+                                                    <button class="btn btn-black btn-prev nxt-prev-btn" type="button">
+                                                        <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-green btn-next nxt-prev-btn"
+                                                            id="timeZoneNextBtn" disabled>
+                                                    <span
+                                                        class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>
+                                                        <i class="ti ti-arrow-right ti-xs"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                     <!-- Property Details -->
                                     <div id="property-features" class="content">
