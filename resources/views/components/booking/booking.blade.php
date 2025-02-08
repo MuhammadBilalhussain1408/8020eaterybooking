@@ -397,19 +397,19 @@
             max-height: 10vh;
         }
 
-        .custom-btn-outline {
+        .custom-btn-outline.timeBtn {
             color: #000000;
             border-color: #000000;
             background: transparent;
             font-size: 20px;
             font-weight: 600;
             padding: 14px 45px 14px 45px;
-            width: 287px;
+            width: 437px;
             margin-top: 6px;
             margin-bottom: 6px;
         }
 
-        .custom-btn-outline:hover {
+        .custom-btn-outline.timeBtn:hover {
             color: #ffffff;
             border-color: #e1612e;
             background: #e1612e;
@@ -780,14 +780,14 @@
                 margin: 10px;
             }
 
-            .custom-btn-outline {
+            .custom-btn-outline.timeBtn {
                 color: #000000;
                 border-color: #000000;
                 background: transparent;
                 font-size: 19px;
                 font-weight: 600;
                 padding: 8px 62px 8px 62px;
-                width: 170px;
+                width: 100%;
                 margin-top: 6px;
                 margin-bottom: 6px;
             }
@@ -838,11 +838,11 @@
                                 <a href="javascript:void(0);" class="app-brand-link">
                                     <img src="{{ asset('assets/logo/logo.png') }}" width="150">
                                 </a>
-{{--                                <h4 class="text-center m-0 pt-5 text-uppercase" style="font-weight: bold;">Visit Us--}}
-{{--                                    Online At:</h4>--}}
-{{--                                <a class="text-center" href="https://weincentivize.com/">--}}
-{{--                                    <h5>www.weincentivize.com</h5>--}}
-{{--                                </a>--}}
+                                <h4 class="text-center m-0 pt-5 text-uppercase" style="font-weight: bold;">Visit Us
+                                    Online At:</h4>
+                                <a class="text-center" href="http://8020eatery.com/">
+                                    <h5>www.8020eatery.com</h5>
+                                </a>
                                 <div class="step" data-target="#personal-details">
                                     <button type="button" class="step-trigger">
                                         <span class="bs-stepper-circle"><i class="fa-solid fa-calendar-days"></i></span>
@@ -875,15 +875,6 @@
                                         <span class="bs-stepper-circle"><i class="fa-solid fa-file-pen"></i></span>
                                         <span class="bs-stepper-label">
                                             <span class="bs-stepper-title">Enter Details</span>
-                                        </span>
-                                    </button>
-                                </div>
-                                <div class="line"></div>
-                                <div class="step" data-target="#property-area">
-                                    <button type="button" class="step-trigger">
-                                        <span class="bs-stepper-circle"><i class="fa-solid fa-thumbs-up"></i></span>
-                                        <span class="bs-stepper-label">
-                                            <span class="bs-stepper-title">Social Media</span>
                                         </span>
                                     </button>
                                 </div>
@@ -959,8 +950,8 @@
                                                             <span class="custom-option-title">
                                                                 Content Room Or Podcast Room
                                                             </span>
-                                                            <h5>
-                                                                Room Available After:
+                                                            <h5 class="fw-semibold text-black">
+                                                                Room is Not Available: <span><i class="fa-solid fa-square-xmark" style="color: #e91e63;"></i></span>
                                                                 <input type="hidden" id="set-time" value="30" />
                                                                 <div class="mt-2" id="countdown">
                                                                   <div id='tiles' class="color-full"></div>
@@ -984,11 +975,15 @@
                                                             <span class="custom-option-title">
                                                                 Conference Room
                                                             </span>
-                                                            <h5>
-                                                                Room Available After:
+                                                            <h5 class="fw-semibold text-black">
+                                                                Room is Available <span><i class="fa-solid fa-square-check" style="color: green;"></i></span>
                                                                 <input type="hidden" id="set-time" value="30"/>
                                                                 <div class="mt-2" id="countdown">
-                                                                  <div id='tiles' class="color-full"></div>
+                                                                  <div id="tiles" class="color-full">
+                                                                      <span>00:</span>
+                                                                      <span>00:</span>
+                                                                      <span>00</span>
+                                                                  </div>
                                                                   <div id ="left" class="countdown-label">Time Remaining</div>
                                                                 </div>
                                                             </h5>
@@ -999,6 +994,18 @@
                                                                id="Conferenceroom" />
                                                     </label>
                                                 </div>
+                                            </div>
+                                            <div class="col-sm-6 pt-3">
+                                                <label class="form-label" for="plPodcast">Podcast Name</label>
+                                                <input type="text" id="plPodcast" name="plPodcast"
+                                                       class="form-control" placeholder="Enter Your Podcast Name"
+                                                       required />
+                                            </div>
+                                            <div class="col-sm-6 pt-3">
+                                                <label class="form-label" for="plShortDescription">Short Description</label>
+                                                <input type="text" id="plShortDescription" name="plShortDescription"
+                                                       class="form-control" placeholder="Short description of what your podcast is about"
+                                                       required />
                                             </div>
 
                                             <div class="col-12 d-flex justify-content-between">
@@ -1180,66 +1187,20 @@
                                                             placeholder="202 555 0111" required />
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-6 pt-3">
-                                                    <label class="form-label" for="plPropertyType">Select
-                                                        Service</label>
-                                                    <select required id="plPropertyType" name="plPropertyType"
-                                                        class="select2 form-select" data-allow-clear="true">
-                                                        <option value="">Select Service Type</option>
-                                                        <option value="Cost Segregation">Cost Segregation</option>
-                                                        <option value="Research & Development">Research & Development
-                                                        </option>
-                                                        <option value="45L Tax Credits">45L Tax Credits</option>
-                                                        <option value="Section 179D Tax Deduction">Section 179D Tax
-                                                            Deduction
-                                                        </option>
-                                                        <option value="Grant Services">Grant Services</option>
-                                                        <option value="CFO Services">CFO Services</option>
-                                                        <option value="CFO Services">Business Tax Credit</option>
-                                                        <option value="CFO Services">Incentives Advisory</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-6 pt-3">
-                                                    <label class="form-label" for="plZipCode">Zip Code</label>
-                                                    <input required type="number" id="plZipCode" name="plZipCode"
-                                                        class="form-control" placeholder="99950" />
-                                                </div>
-                                                <div class="col-sm-6 pt-3">
-                                                    <label class="form-label" for="plCountry">Country</label>
-                                                    <select required id="plCountry" name="plCountry"
-                                                        class="select2 form-select" data-allow-clear="true">
-                                                        <option value="">Select</option>
-                                                        <option value="Australia">Australia</option>
-                                                        <option value="Bangladesh">Bangladesh</option>
-                                                        <option value="Belarus">Belarus</option>
-                                                        <option value="Brazil">Brazil</option>
-                                                        <option value="Canada">Canada</option>
-                                                        <option value="China">China</option>
-                                                        <option value="France">France</option>
-                                                        <option value="Germany">Germany</option>
-                                                        <option value="India">India</option>
-                                                        <option value="Indonesia">Indonesia</option>
-                                                        <option value="Israel">Israel</option>
-                                                        <option value="Italy">Italy</option>
-                                                        <option value="Japan">Japan</option>
-                                                        <option value="Korea">Korea, Republic of</option>
-                                                        <option value="Mexico">Mexico</option>
-                                                        <option value="Philippines">Philippines</option>
-                                                        <option value="Russia">Russian Federation</option>
-                                                        <option value="South Africa">South Africa</option>
-                                                        <option value="Thailand">Thailand</option>
-                                                        <option value="Turkey">Turkey</option>
-                                                        <option value="Ukraine">Ukraine</option>
-                                                        <option value="United Arab Emirates">United Arab Emirates
-                                                        </option>
-                                                        <option value="United Kingdom">United Kingdom</option>
-                                                        <option value="United States">United States</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-6 pt-3">
-                                                    <label class="form-label" for="plState">State</label>
-                                                    <input required type="text" id="plState" name="plState"
-                                                        class="form-control" placeholder="California" />
+                                                <input type="hidden" id="status" name="status">
+                                                <div class="col-md-12 pt-5 pb-5">
+                                                    <div class="form-check my-2 ms-2">
+                                                        <input class="form-check-input" required type="checkbox"
+                                                               name="plOtherCharges" id="plOtherCharges" />
+                                                        <label class="form-check-label" for="plOtherCharges">
+                                                            By proceeding, you confirm that you have read and agree to <a
+                                                                href="https://weincentivize.com/terms-and-conditions"
+                                                                target="_blank">Terms of Use</a> & <a
+                                                                href="https://weincentivize.com/privacy-policy"
+                                                                target="_blank">
+                                                                Privacy Notice.</a>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-12 d-flex justify-content-between">
@@ -1247,17 +1208,25 @@
                                                     <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>
                                                     <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                 </button>
-                                                <button class="btn btn-green btn-next btn-next-form nxt-prev-btn"
-                                                    id="nextButtonForm">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>
-                                                    <i class="ti ti-arrow-right ti-xs"></i>
+
+                                                <button id="socialMediaButton"
+                                                        class="btn btn-success btn-submit btn-next nxt-prev-btn">
+                                                    Submit
                                                 </button>
-                                                <!-- <button  class="btn btn-green btn-next-form nxt-prev-btn" id="nextButtonForm">
-                                            <span class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>
-                                            <i class="ti ti-arrow-right ti-xs"></i>
-                                        </button> -->
+
                                             </div>
+{{--                                            <div class="col-12 d-flex justify-content-between">--}}
+{{--                                                <button class="btn btn-black btn-prev nxt-prev-btn" type="button">--}}
+{{--                                                    <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>--}}
+{{--                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>--}}
+{{--                                                </button>--}}
+{{--                                                <button class="btn btn-green btn-next btn-next-form nxt-prev-btn"--}}
+{{--                                                    id="nextButtonForm">--}}
+{{--                                                    <span--}}
+{{--                                                        class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>--}}
+{{--                                                    <i class="ti ti-arrow-right ti-xs"></i>--}}
+{{--                                                </button>--}}
+{{--                                            </div>--}}
 
                                         </div>
                                     </div>
@@ -1274,7 +1243,8 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="plbrand">Name Of Business or
-                                                    Brand</label>
+                                                    Brand
+                                                </label>
                                                 <input type="text" id="plbrand" name="plbrand"
                                                     class="form-control" placeholder="Business or Brand Name" />
                                             </div>
@@ -1331,18 +1301,7 @@
                                             </div>
 
 
-                                            <div class="col-12 d-flex justify-content-between">
-                                                <button class="btn btn-black btn-prev nxt-prev-btn" type="button">
-                                                    <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
 
-                                                <button id="socialMediaButton"
-                                                    class="btn btn-success btn-submit btn-next nxt-prev-btn">
-                                                    Submit
-                                                </button>
-
-                                            </div>
                                         </div>
                                     </div>
 
