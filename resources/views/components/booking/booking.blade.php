@@ -56,745 +56,7 @@
 
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
-
-    <style>
-        .layout-menu-fixed:not(.layout-menu-collapsed) .layout-page,
-        .layout-menu-fixed-offcanvas:not(.layout-menu-collapsed) .layout-page {
-            padding-left: 0;
-        }
-
-        .layout-navbar-fixed .layout-wrapper:not(.layout-without-menu) .layout-page {
-            padding-top: 0 !important;
-        }
-
-        .layout-navbar-fixed .layout-wrapper:not(.layout-horizontal) .layout-page:before {
-            display: none;
-        }
-
-        .app-brand-link {
-            text-align: center;
-            display: block;
-        }
-
-        .abr-heading {
-            color: black;
-            text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15);
-            text-transform: capitalize;
-        }
-
-        /*Calendar CSS*/
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background: #e1612e;
-            color: white;
-        }
-
-        .header-display {
-            display: flex;
-            align-items: center;
-        }
-
-        .header-display p {
-            margin: 5px;
-            word-spacing: 0.5rem;
-            font-size: 29px;
-            font-weight: 600;
-        }
-
-        pre {
-            padding: 10px;
-            margin: 0;
-            cursor: pointer;
-            font-size: 25px;
-        }
-
-        .days,
-        .week {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            margin: auto;
-            padding: 0px 20px 0px 20px;
-            justify-content: space-between;
-        }
-
-        .week div,
-        .days div {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 45px;
-            width: 53px;
-            border-radius: 100%;
-            color: black;
-            font-weight: bold;
-            font-size: 21px;
-            margin: 13px;
-        }
-
-        .days div:hover {
-            background: black;
-            color: white !important;
-            cursor: pointer;
-        }
-
-        .week div {
-            opacity: 0.5;
-        }
-
-        /* .current-date {
-            background-color: #058283;
-            color: white !important;
-        } */
-        .display-selected {
-            margin-bottom: 10px;
-            padding: 20px 20px;
-            text-align: center;
-        }
-
-        .calendar {
-            box-shadow: 0 0.125rem 0.5rem 0 rgb(0 0 0 / 19%);
-            padding: 0;
-        }
-
-        /*Ribbon CSS*/
-
-        .ribbon {
-            width: 400px;
-            height: 60px;
-            margin: 0px auto 61px;
-            position: relative;
-            color: #fff;
-            font: 28px/60px sans-serif;
-            text-align: center;
-            text-transform: uppercase;
-            background: #282828;
-
-            -webkit-animation: main 250ms;
-            -moz-animation: main 250ms;
-            -ms-animation: main 250ms;
-            animation: main 250ms;
-        }
-
-        .ribbon i {
-            position: absolute;
-        }
-
-        .ribbon i:first-child,
-        .ribbon i:nth-child(2) {
-            position: absolute;
-            left: -20px;
-            bottom: -20px;
-            z-index: -1;
-            border: 20px solid transparent;
-            border-right-color: #6a6a6a;
-
-            -webkit-animation: edge 500ms;
-            -moz-animation: edge 500ms;
-            -ms-animation: edge 500ms;
-            animation: edge 500ms;
-        }
-
-        .ribbon i:nth-child(2) {
-            left: auto;
-            right: -20px;
-            border-right-color: transparent;
-            border-left-color: #6a6a6a;
-        }
-
-        .btn.selected {
-            background-color: #058283;
-            color: white;
-            border: 1px solid #058283;
-            /* Optional border */
-        }
-
-        .btn:disabled {
-            background-color: #e0e0e0;
-            /* Disabled color */
-            color: #9e9e9e;
-            cursor: not-allowed;
-        }
-
-        .ribbon i:nth-child(3),
-        .ribbon i:last-child {
-            width: 20px;
-            bottom: -20px;
-            left: -60px;
-            z-index: -2;
-            border: 30px solid black;
-            border-left-color: transparent;
-
-            -webkit-animation: back 600ms;
-            -moz-animation: back 600ms;
-            -ms-animation: back 600ms;
-            animation: back 600ms;
-
-            -webkit-transform-origin: 100% 0;
-            -moz-transform-origin: 100% 0;
-            -ms-transform-origin: 100% 0;
-            transform-origin: 100% 0;
-        }
-
-        .ribbon i:last-child {
-            bottom: -20px;
-            left: auto;
-            right: -60px;
-            border: 30px solid black;
-            border-right-color: transparent;
-
-            -webkit-transform-origin: 0 0;
-            -moz-transform-origin: 0 0;
-            -ms-transform-origin: 0 0;
-            transform-origin: 0 0;
-        }
-
-        /* animations */
-
-        @-webkit-keyframes main {
-            0% {
-                -webkit-transform: scaleX(0);
-            }
-
-            100% {
-                -webkit-transform: scaleX(1);
-            }
-        }
-
-        @-webkit-keyframes edge {
-
-            0%,
-            50% {
-                -webkit-transform: scaleY(0);
-            }
-
-            100% {
-                -webkit-transform: scaleY(1);
-            }
-        }
-
-        @-webkit-keyframes back {
-
-            0%,
-            75% {
-                -webkit-transform: scaleX(0);
-            }
-
-            100% {
-                -webkit-transform: scaleX(1);
-            }
-        }
-
-
-        @-moz-keyframes main {
-            0% {
-                -moz-transform: scaleX(0);
-            }
-
-            100% {
-                -moz-transform: scaleX(1);
-            }
-        }
-
-        @-moz-keyframes edge {
-
-            0%,
-            50% {
-                -moz-transform: scaleY(0);
-            }
-
-            100% {
-                -moz-transform: scaleY(1);
-            }
-        }
-
-        @-moz-keyframes back {
-
-            0%,
-            75% {
-                -moz-transform: scaleX(0);
-            }
-
-            100% {
-                -moz-transform: scaleX(1);
-            }
-        }
-
-
-        @keyframes main {
-            0% {
-                transform: scaleX(0);
-            }
-
-            100% {
-                transform: scaleX(1);
-            }
-        }
-
-        @keyframes edge {
-
-            0%,
-            50% {
-                transform: scaleY(0);
-            }
-
-            100% {
-                transform: scaleY(1);
-            }
-        }
-
-        @keyframes back {
-
-            0%,
-            75% {
-                transform: scaleX(0);
-            }
-
-            100% {
-                transform: scaleX(1);
-            }
-        }
-
-        .bs-stepper.vertical .bs-stepper-header {
-            min-width: 20rem;
-        }
-
-        .bs-stepper .step.active .bs-stepper-circle {
-            background-color: #3fbf50;
-        }
-
-        .light-style .bs-stepper .bs-stepper-header .bs-stepper-title,
-        .light-style .bs-stepper .bs-stepper-header .bs-stepper-label {
-            color: black;
-            font-size: 21px;
-        }
-
-        .light-style .bs-stepper:not(.wizard-modern) {
-            box-shadow: 0px 0px 15px 2px rgb(0 0 0 / 14%);
-            margin-left: 3rem;
-            margin-right: 3rem;
-        }
-
-        .btn-black {
-            background-color: #000000;
-            border-color: black;
-            color: white;
-        }
-
-        .btn-black:hover {
-            background-color: #3fbf50 !important;
-            border-color: #3fbf50;
-            color: white;
-        }
-
-        body {
-            width: 100%;
-            transform-origin: bottom center;
-            transform: scale(84%);
-            max-height: 10vh;
-        }
-
-        .custom-btn-outline.timeBtn {
-            color: #000000;
-            border-color: #000000;
-            background: transparent;
-            font-size: 20px;
-            font-weight: 600;
-            padding: 14px 45px 14px 45px;
-            width: 437px;
-            margin-top: 6px;
-            margin-bottom: 6px;
-        }
-
-        .custom-btn-outline.timeBtn:hover {
-            color: #ffffff;
-            border-color: #e1612e;
-            background: #e1612e;
-            font-weight: 600;
-        }
-
-        .btn-green {
-            color: #fff !important;
-            background-color: #e1612e !important;
-            border-color: #e1612e !important;
-        }
-
-        .btn-green:hover {
-            color: #fff !important;
-            background-color: #000000 !important;
-            border-color: #000000 !important;
-        }
-
-        .nxt-prev-btn {
-            padding: 12px;
-            font-size: 19px;
-            width: 16%;
-        }
-
-        .custom-option-icon .custom-option-body .custom-option-title {
-            font-size: 20px;
-            color: #000000;
-        }
-
-        .custom-option.checked {
-            border: 2px solid #000000 !important;
-            margin: 0;
-        }
-
-        .form-check-input:checked {
-            background-color: #000000;
-            border-color: #000000;
-        }
-
-        .custom-option-icon .custom-option-body svg {
-            height: 37px;
-            width: 37px;
-        }
-
-        .custom-option-icon.checked i,
-        .custom-option-icon.checked svg {
-            color: #008282;
-        }
-
-        .form-label,
-        .col-form-label {
-            color: #000000;
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            border-color: #058283 !important;
-        }
-
-        .form-control {
-            font-size: 17px;
-            font-weight: 600;
-            padding: 11px 10px 11px 10px;
-        }
-
-        .form-control:focus {
-            padding: 11px 10px 11px 10px;
-        }
-
-        .input-group:focus-within .form-control,
-        .input-group:focus-within .form-select {
-            padding: 11px 10px 11px 10px;
-            border-color: #058283 !important;
-        }
-
-        .input-group:focus-within .form-control,
-        .input-group:focus-within .input-group-text {
-            border-color: #058283 !important;
-        }
-
-        .light-style .select2-container--default .select2-selection--single {
-            height: 51px !important;
-        }
-
-        .light-style .select2-container--default .select2-selection--single .select2-selection__rendered {
-            line-height: 51px !important;
-            color: #000000;
-        }
-
-        .light-style .select2-container--default.select2-container--open .select2-selection--single .select2-selection__rendered {
-            line-height: 51px !important;
-            padding-inline-start: calc(0.9375rem - 2px);
-            padding-inline-end: calc(2.25rem - 2px);
-        }
-
-        .light-style .select2-search__field {
-            color: #000000;
-        }
-
-        .select2-search--dropdown .select2-search__field {
-            padding: 10px;
-        }
-
-        .light-style .select2-container--default .select2-results__option {
-            color: #000000;
-            font-size: 18px;
-            font-weight: 500;
-        }
-
-        .select2-container--default .select2-results__option--highlighted:not([aria-selected=true]) {
-            background-color: rgb(5 130 131) !important;
-            color: #ffffff !important;
-        }
-
-        .select2-container--default.select2-container--focus .select2-selection,
-        .select2-container--default.select2-container--open .select2-selection {
-            border-color: #058283 !important;
-        }
-
-        .light-style .select2-container--default .select2-selection--single .select2-selection__clear {
-            color: #000000;
-            font-size: 20px;
-            right: 4px;
-            bottom: 3px;
-        }
-
-        .select2-container .select2-selection--single .select2-selection__rendered {
-            font-weight: 600;
-            font-size: 17px;
-        }
-
-        .form-control::-webkit-input-placeholder {
-            font-size: 18px;
-            color: #8d8d8d !important;
-        }
-
-        .light-style .select2-container--default .select2-selection__placeholder {
-            font-size: 18px;
-            color: #8d8d8d !important;
-        }
-
-        .form-check-label {
-            color: #000000;
-            font-size: 18px;
-        }
-
-        .booking-text {
-            font-size: 20px;
-            color: black;
-            font-weight: 500;
-        }
-
-        ul.book-list {
-            color: black;
-            font-weight: 600;
-            font-size: 19px;
-            line-height: 36px;
-            list-style: none;
-        }
-
-        #price-details {
-            display: block !important;
-            visibility: visible !important;
-        }
-
-        .selected-date {
-            background-color: #e1612e;
-            color: #fff !important;
-            border-radius: 50%;
-        }
-
-        .disabled {
-            color: #cccccc;
-            /* Lighter color for past dates */
-            background-color: #f0f0f0;
-            /* Light background to visually distinguish */
-            pointer-events: none;
-            /* Prevent clicks */
-        }
-
-        #page-loader1 {
-            background-color: #2c3e50;
-            width: 100px;
-            height: 100px;
-            position: absolute;
-            top: 340px;
-            left: calc(50% - 50px);
-            transition: all 0.2s ease;
-            -webkit-animation: page-loader 2s infinite;
-            animation: page-loader 2s infinite;
-        }
-
-        @-webkit-keyframes page-loader {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes page-loader {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .bs-stepper .step.crossed .step-trigger .bs-stepper-circle {
-            background-color: #f7f7f8 !important;
-            color: #00000063 !important;
-        }
-
-        .light-style .bs-stepper .bs-stepper-header .step:not(.active) .bs-stepper-circle {
-            background-color: rgb(0 0 0);
-            color: #ffffff;
-        }
-
-        .was-validated .form-control:invalid,
-        .was-validated .form-control:valid,
-        .form-control.is-invalid,
-        .form-control.is-valid {
-            padding: 11px 10px 11px 10px;
-        }
-
-        .input-group:focus-within {
-            box-shadow: none;
-        }
-
-        .invalid-feedback {
-            font-size: 17px;
-            font-weight: 600;
-        }
-
-        .input-group-text {
-            font-size: 17px;
-            font-weight: 600;
-        }
-
-        .select2-container--default .select2-selection--single .select2-selection__arrow {
-            top: 3px;
-        }
-
-        .custom-option-icon .custom-option-body i::before {
-            font-size: 2.75rem;
-        }
-
-        .custom-option-icon .custom-option-body .custom-option-title {
-            font-size: 24px;
-            color: #000000;
-        }
-
-        .custom-option {
-            border: 1px solid #9d9d9d;
-        }
-        button.timeBtn {
-            text-transform: uppercase;
-        }
-
-        .countdown-label {
-            color: white;
-            text-align: center;
-            text-transform: uppercase;
-            display: inline-block;
-            letter-spacing: 2px;
-            margin-top: 9px
-        }
-        #countdown{
-            box-shadow: 0 1px 2px 0 rgba(1, 1, 1, 0.4);
-            width: 200px;
-            height: 108px;
-            text-align: center;
-            background: #000000;
-            border-radius: 5px;
-            margin: auto;
-
-        }
-        #countdown #tiles{
-            color: #fff;
-            position: relative;
-            z-index: 1;
-            text-shadow: 1px 1px 0px #ccc;
-            text-align: center;
-            padding: 20px;
-            border-radius: 5px 5px 0 0;
-            font-size: 30px;
-            font-weight: bold;
-            display: block;
-
-        }
-
-        .color-full {
-            background: #e1612e;
-        }
-        .color-half {
-            background: #ebc85d;
-        }
-        .color-empty {
-            background: #e5554e;
-        }
-
-        #countdown #tiles > span{
-            width: 70px;
-            max-width: 70px;
-
-            padding: 18px 0;
-            position: relative;
-        }
-
-        #countdown .labels{
-            width: 100%;
-            height: 25px;
-            text-align: center;
-            position: absolute;
-            bottom: 8px;
-        }
-
-        #countdown .labels li{
-            width: 102px;
-            font: bold 15px 'Droid Sans', Arial, sans-serif;
-            color: #f47321;
-            text-shadow: 1px 1px 0px #000;
-            text-align: center;
-            text-transform: uppercase;
-            display: inline-block;
-        }
-
-
-
-        /*For Mobiles*/
-
-        @media only screen and (min-width: 360px) and (max-width: 740px),
-        only screen and (min-width: 412px) and (max-width: 915px),
-        only screen and (min-width: 767px) and (max-width: 991px) {
-
-            .ribbon {
-                width: 339px;
-                font-size: 22px;
-            }
-
-            .light-style .bs-stepper:not(.wizard-modern) {
-                margin-left: 0;
-                margin-right: 0;
-            }
-
-            .container-xxl {
-                padding-right: 0;
-                padding-left: 0;
-            }
-
-            .week div,
-            .days div {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 34px;
-                width: 32px;
-                border-radius: 100%;
-                color: black;
-                font-weight: bold;
-                font-size: 21px;
-                margin: 10px;
-            }
-
-            .custom-btn-outline.timeBtn {
-                color: #000000;
-                border-color: #000000;
-                background: transparent;
-                font-size: 19px;
-                font-weight: 600;
-                padding: 8px 62px 8px 62px;
-                width: 100%;
-                margin-top: 6px;
-                margin-bottom: 6px;
-            }
-        }
-
-    </style>
-
+    @include('components.booking.style')
 </head>
 
 <body>
@@ -923,7 +185,8 @@
                                             </div>
 
                                             <div class="col-12 d-flex justify-content-between">
-                                                <button class="btn btn-label-secondary btn-prev nxt-prev-btn" type="button" disabled>
+                                                <button class="btn btn-label-secondary btn-prev nxt-prev-btn"
+                                                    type="button" disabled>
                                                     <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>
                                                     <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                 </button>
@@ -945,27 +208,33 @@
                                                 <h4 class="text-black">Select Time</h4>
                                                 <div class="d-flex gap-4 flex-wrap mt-4" id="timeSlotContainerDIv">
                                                     <button type="button"
-                                                        class="btn custom-btn-outline waves-effect timeBtn">
+                                                        class="btn custom-btn-outline waves-effect timeBtn"
+                                                        data-start_time="08:00:00" data-end_time="09:30:00">
                                                         8:00 AM - 9:30 AM
                                                     </button>
                                                     <button type="button"
-                                                        class="btn custom-btn-outline waves-effect timeBtn">
+                                                        class="btn custom-btn-outline waves-effect timeBtn"
+                                                        data-start_time="10:00:00" data-end_time="11:30:00">
                                                         10:00 AM - 11:30 AM
                                                     </button>
                                                     <button type="button"
-                                                            class="btn custom-btn-outline waves-effect timeBtn">
+                                                        class="btn custom-btn-outline waves-effect timeBtn"
+                                                        data-start_time="12:00:00" data-end_time="13:30:00">
                                                         12:00 PM - 1:30 PM
                                                     </button>
                                                     <button type="button"
-                                                            class="btn custom-btn-outline waves-effect timeBtn">
+                                                        class="btn custom-btn-outline waves-effect timeBtn"
+                                                        data-start_time="14:00:00" data-end_time="15:30:00">
                                                         2:00 PM - 3:30 PM
                                                     </button>
                                                     <button type="button"
-                                                            class="btn custom-btn-outline waves-effect timeBtn">
+                                                        class="btn custom-btn-outline waves-effect timeBtn"
+                                                        data-start_time="16:00:00" data-end_time="17:30:00">
                                                         4:00 PM - 5:30 PM
                                                     </button>
                                                     <button type="button"
-                                                            class="btn custom-btn-outline waves-effect timeBtn">
+                                                        class="btn custom-btn-outline waves-effect timeBtn"
+                                                        data-start_time="18:00:00" data-end_time="19:30:00">
                                                         6:00 PM - 7:30 PM
                                                     </button>
 
@@ -989,89 +258,95 @@
 
                                     <!-- Time Zone -->
                                     <div id="time-zone" class="content">
-                                            <div class="row g-6">
-                                                <h4 class="text-black">Select Room</h4>
-                                                <div class="col-md-6 mb-md-0 mb-5">
-                                                    <div class="form-check custom-option custom-option-icon">
-                                                        <label class="form-check-label custom-option-content"
-                                                               for="Podcastroom">
+                                        <div class="row g-6">
+                                            <h4 class="text-black">Select Room</h4>
+                                            <div class="col-md-6 mb-md-0 mb-5">
+                                                <div class="form-check custom-option custom-option-icon">
+                                                    <label class="form-check-label custom-option-content"
+                                                        for="Podcastroom">
                                                         <span class="custom-option-body">
                                                             <i class="fa-solid fa-globe" style="color: black;"></i>
                                                             <span class="custom-option-title">
                                                                 Content Room Or Podcast Room
                                                             </span>
                                                             <h5 class="fw-semibold text-black">
-                                                                Room is Not Available: <span><i class="fa-solid fa-square-xmark" style="color: #e91e63;"></i></span>
-                                                                <input type="hidden" id="set-time" value="30" />
+                                                                Room is Not Available: <span><i
+                                                                        class="fa-solid fa-square-xmark"
+                                                                        style="color: #e91e63;"></i></span>
+                                                                <input type="hidden" id="set-time"
+                                                                    value="30" />
                                                                 <div class="mt-2" id="countdown">
-                                                                  <div id='tiles' class="color-full"></div>
-                                                                  <div id ="left" class="countdown-label">Time Remaining</div>
+                                                                    <div id='tiles' class="color-full"></div>
+                                                                    <div id ="left" class="countdown-label">Time
+                                                                        Remaining</div>
                                                                 </div>
                                                             </h5>
                                                         </span>
-                                                            <input class="form-check-input timeZoneCheck"
-                                                                   type="checkbox"
-                                                                   value="Podcastroom"
-                                                                   id="Podcastroom" />
-                                                        </label>
-                                                    </div>
+                                                        <input class="form-check-input roomCheck" type="checkbox"
+                                                            value="Podcastroom" id="Podcastroom" />
+                                                    </label>
                                                 </div>
-                                                <div class="col-md-6 mb-md-0 mb-5">
-                                                    <div class="form-check custom-option custom-option-icon">
-                                                        <label class="form-check-label custom-option-content"
-                                                               for="Conferenceroom">
+                                            </div>
+                                            <div class="col-md-6 mb-md-0 mb-5">
+                                                <div class="form-check custom-option custom-option-icon">
+                                                    <label class="form-check-label custom-option-content"
+                                                        for="Conferenceroom">
                                                         <span class="custom-option-body">
                                                             <i class="fa-solid fa-globe" style="color: black;"></i>
                                                             <span class="custom-option-title">
                                                                 Conference Room
                                                             </span>
                                                             <h5 class="fw-semibold text-black">
-                                                                Room is Available <span><i class="fa-solid fa-square-check" style="color: green;"></i></span>
-                                                                <input type="hidden" id="set-time" value="30"/>
+                                                                Room is Available <span><i
+                                                                        class="fa-solid fa-square-check"
+                                                                        style="color: green;"></i></span>
+                                                                <input type="hidden" id="set-time"
+                                                                    value="30" />
                                                                 <div class="mt-2" id="countdown">
-                                                                  <div id="tiles" class="color-full">
-                                                                      <span>00:</span>
-                                                                      <span>00:</span>
-                                                                      <span>00</span>
-                                                                  </div>
-                                                                  <div id ="left" class="countdown-label">Time Remaining</div>
+                                                                    <div id="tiles" class="color-full">
+                                                                        <span>00:</span>
+                                                                        <span>00:</span>
+                                                                        <span>00</span>
+                                                                    </div>
+                                                                    <div id ="left" class="countdown-label">Time
+                                                                        Remaining</div>
                                                                 </div>
                                                             </h5>
                                                         </span>
-                                                            <input class="form-check-input timeZoneCheck"
-                                                                   type="checkbox"
-                                                                   value="Conferenceroom"
-                                                                   id="Conferenceroom" />
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 pt-3">
-                                                    <label class="form-label" for="plPodcast">Podcast Name</label>
-                                                    <input type="text" id="plPodcast" name="plPodcast"
-                                                           class="form-control" placeholder="Enter Your Podcast Name"
-                                                           required />
-                                                </div>
-                                                <div class="col-sm-6 pt-3">
-                                                    <label class="form-label" for="plShortDescription">Short Description</label>
-                                                    <input type="text" id="plShortDescription" name="plShortDescription"
-                                                           class="form-control" placeholder="Short description of what your podcast is about"
-                                                           required />
-                                                </div>
-
-                                                <div class="col-12 d-flex justify-content-between">
-                                                    <button class="btn btn-black btn-prev nxt-prev-btn" type="button">
-                                                        <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>
-                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                    </button>
-                                                    <button type="button" class="btn btn-green btn-next nxt-prev-btn"
-                                                            id="timeZoneNextBtn" disabled>
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>
-                                                        <i class="ti ti-arrow-right ti-xs"></i>
-                                                    </button>
+                                                        <input class="form-check-input roomCheck" type="checkbox"
+                                                            value="Conferenceroom" id="Conferenceroom" />
+                                                    </label>
                                                 </div>
                                             </div>
+                                            <div class="col-sm-6 pt-3">
+                                                <label class="form-label" for="plPodcast">Podcast Name</label>
+                                                <input type="text" id="plPodcast" name="plPodcast"
+                                                    class="form-control" placeholder="Enter Your Podcast Name"
+                                                    required />
+                                            </div>
+                                            <div class="col-sm-6 pt-3">
+                                                <label class="form-label" for="plShortDescription">Short
+                                                    Description</label>
+                                                <input type="text" id="plShortDescription"
+                                                    name="plShortDescription" class="form-control"
+                                                    placeholder="Short description of what your podcast is about"
+                                                    required />
+                                            </div>
+
+                                            <div class="col-12 d-flex justify-content-between">
+                                                <button class="btn btn-black btn-prev nxt-prev-btn" type="button">
+                                                    <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>
+                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                </button>
+                                                <button type="button" class="btn btn-green btn-next nxt-prev-btn"
+                                                    id="roomNextBtn" disabled>
+                                                    <span
+                                                        class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>
+                                                    <i class="ti ti-arrow-right ti-xs"></i>
+                                                </button>
+                                            </div>
                                         </div>
+                                    </div>
 
                                     <!-- Property Details -->
                                     <div id="property-features" class="content">
@@ -1191,10 +466,10 @@
                                                 <div class="col-md-12 pt-5 pb-5">
                                                     <div class="form-check my-2 ms-2">
                                                         <input class="form-check-input" required type="checkbox"
-                                                               name="plOtherCharges" id="plOtherCharges" />
+                                                            name="plOtherCharges" id="plOtherCharges" />
                                                         <label class="form-check-label" for="plOtherCharges">
-                                                            By proceeding, you confirm that you have read and agree to <a
-                                                                href="https://weincentivize.com/terms-and-conditions"
+                                                            By proceeding, you confirm that you have read and agree to
+                                                            <a href="https://weincentivize.com/terms-and-conditions"
                                                                 target="_blank">Terms of Use</a> & <a
                                                                 href="https://weincentivize.com/privacy-policy"
                                                                 target="_blank">
@@ -1210,24 +485,11 @@
                                                 </button>
 
                                                 <button id="socialMediaButton"
-                                                        class="btn btn-success btn-submit btn-next nxt-prev-btn">
+                                                    class="btn btn-success btn-submit btn-next nxt-prev-btn">
                                                     Submit
                                                 </button>
 
                                             </div>
-{{--                                            <div class="col-12 d-flex justify-content-between">--}}
-{{--                                                <button class="btn btn-black btn-prev nxt-prev-btn" type="button">--}}
-{{--                                                    <i class="ti ti-arrow-left ti-xs me-sm-2 me-0"></i>--}}
-{{--                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>--}}
-{{--                                                </button>--}}
-{{--                                                <button class="btn btn-green btn-next btn-next-form nxt-prev-btn"--}}
-{{--                                                    id="nextButtonForm">--}}
-{{--                                                    <span--}}
-{{--                                                        class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>--}}
-{{--                                                    <i class="ti ti-arrow-right ti-xs"></i>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-
                                         </div>
                                     </div>
 
@@ -1339,31 +601,11 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td><span class="fw-bold"
-                                                                                style="font-weight: bold; color: black; font-size: 20px; width: 25%;">Service
-                                                                                Name</span></td>
-                                                                        <td
-                                                                            style="font-size: 20px; color: black; font-weight: 400; width: 75%;">
-                                                                            <span id="serviceName">[Service
-                                                                                Name]</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><span class="fw-bold"
                                                                                 style="font-weight: bold; color: black; font-size: 20px; width: 25%;">Date
                                                                                 & Time</span></td>
                                                                         <td
                                                                             style="font-size: 20px; color: black; font-weight: 400; width: 75%;">
                                                                             <span id="dateTime">[Date and Time]</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><span class="fw-bold"
-                                                                                style="font-weight: bold; color: black; font-size: 20px; width: 25%;">Location</span>
-                                                                        </td>
-                                                                        <td
-                                                                            style="font-size: 20px; color: black; font-weight: 400; width: 75%;">
-                                                                            <span id="location">[Location
-                                                                                Address]</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -1396,36 +638,24 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </form>
-
                             </div>
                         </div>
-
                         <!--/ Property Listing Wizard -->
                     </div>
-
                     <!-- / Content -->
                 </div>
                 <!-- Content wrapper -->
-
             </div>
             <!-- / Layout page -->
-
         </div>
-
         <!-- Overlay -->
         <div class="layout-overlay layout-menu-toggle"></div>
-
         <!-- Drag Target Area To SlideIn Menu On Small Screens -->
         <div class="drag-target"></div>
     </div>
-
     </div>
-
     <!-- Core JS -->
-    <!-- buiassets/vendor/js/core.js -->
 
     <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
@@ -1570,18 +800,7 @@
                 const dayElements = document.querySelectorAll(".days div:not(.disabled)");
                 dayElements.forEach((day) => {
                     day.addEventListener("click", (e) => {
-                    let day = e.target.dataset.date.substring(0, 3)
-                    if(day != 'Sun' & day != 'Sat'){
-                        // const InputDate = new Date(selectedDate);
-                        // const day = InputDate.getDay(); // Get the day of the week (0 = Sunday, 6 = Saturday)
-
-                        // // If the selected date is Saturday (6) or Sunday (0)
-                        // if (day === 0 || day === 6) {
-                        //     alert('Weekends are not allowed. Please select a weekday.');
-                        //     selectedDate.value = ''; // Clear the input
-                        //     return
-                        // }
-                        // Remove highlight from the previously selected date
+                        let day = e.target.dataset.date.substring(0, 3)
                         if (selectedDate) {
                             selectedDate.classList.remove("selected-date");
                         }
@@ -1593,9 +812,6 @@
                         // Display selected date
                         const selectedDateStr = e.target.dataset.date;
                         selectedDateElement.innerHTML = `Selected Date: ${selectedDateStr}`;
-                    } else {
-                        toastr.error('Weekends Are Not Allowed For Booking');
-                    }
                     });
                 });
             }
@@ -1638,74 +854,9 @@
             const nextButtonForm = document.querySelector(".btn-next-form");
 
             const timeSlots = [
-                "08:00am-09:30am", "10:00am-11:30pm", "12:00pm-01:30pm", "02:00pm-03:30pm", "04:00pm-5:30pm", "06:00pm-07:30pm"
+                "08:00am-09:30am", "10:00am-11:30pm", "12:00pm-01:30pm", "02:00pm-03:30pm", "04:00pm-5:30pm",
+                "06:00pm-07:30pm"
             ];
-
-            function timeToMinutes(time) {
-                const [hoursMinutes, period] = time.split(/(am|pm)/);
-                let [hours, minutes] = hoursMinutes.split(":").map(Number);
-                if (period === "pm" && hours < 12) hours += 12;
-                if (period === "am" && hours === 12) hours = 0;
-                return hours * 60 + minutes;
-            }
-
-            function getCurrentTimeIndex() {
-                let timezone = document.querySelector('.timeZoneCheck:checked')?.value;
-                let nowZ = new Date();
-                const utcOffset = parseInt(timezone);
-                console.log(utcOffset);
-
-                const now = new Date(nowZ.getTime() + (utcOffset * 3600000));
-                console.log(now);
-
-                const hours = nowZ.getHours();
-                const minutes = nowZ.getMinutes();
-                const period = hours >= 12 ? "pm" : "am";
-                const adjustedHours = hours % 12 || 12;
-                const currentTime = `${adjustedHours}:${minutes >= 30 ? '30' : '00'}${period}`;
-
-                let slot =  timeSlots.findIndex(time => timeToMinutes(time) >= timeToMinutes(currentTime));
-                if(slot > 12){
-                    return 0;
-                }
-                return slot;
-            }
-
-            function displayTimeSlots() {
-                const timeSlotsContainer = document.querySelector("#timeSlotContainerDIv");
-                timeSlotsContainer.innerHTML = "";
-
-                timeSlots.forEach(i=>{
-                    let button = document.createElement("button");
-                    button.type = "button";
-                    button.className = "btn custom-btn-outline waves-effect timeBtn";
-                    button.textContent = i;
-                    timeSlotsContainer.appendChild(button);
-                })
-
-                previousButton.style.pointerEvents = currentIndex === 0 ? "none" : "auto";
-            }
-            function formatTime(date) {
-                return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
-            }
-            function handleTimeSelection(button) {
-                // Remove highlight from any previously selected button
-                const selectedButton = document.querySelector(".btn.selected");
-                if (selectedButton) {
-                    selectedButton.classList.remove("selected");
-                }
-
-                // Highlight the clicked button
-                button.classList.add("selected");
-
-                // Extract and clean the time value
-                const rawTimeValue = button.textContent.trim(); // Get and trim the text content
-
-                // Update formData with cleaned time value
-                // formData.selectedTime = rawTimeValue;
-
-                // console.log("Selected Time:", formData.selectedTime); // Debugging
-            }
 
             function updateCurrentIndex(isNext) {
                 if (isNext) {
@@ -1761,53 +912,35 @@
 
             if (nextButtonForm) {
                 nextButtonForm.addEventListener("click", (event) => {
-                    // Check if the form fields are valid
-                    // if (validateFormFields()) {
-                    // Perform the action if valid
                     updateCurrentIndex(true); // Replace this with the appropriate function if needed
-                    // } else {
-                    //     event.preventDefault(); // Prevent default action if validation fails
-                    //     alert("Please fill out all required fields."); // Optionally, show an error message
-                    // }
                 });
             }
-            // displayTimeSlots();
-
-            // AJAX Form Submission Script
 
 
             $('#socialMediaButton').on('click', function(e) {
                 e.preventDefault();
-                if($('#plAddress').val().trim() == ''){
-                    console.log('here');
-
-                    return;
-                }
                 showloader()
+                const dateDiv = document.querySelector('[data-date].selected-date');
+                let booking_data = dateDiv.getAttribute('data-date');
+                let TimeSelected = document.querySelector('.timeBtn.selected');
+                let start_time = TimeSelected?.getAttribute('data-start_time')
+                let end_time = TimeSelected?.getAttribute('data-end_time');
+                let booking_room = $('.roomCheck:checked').val();
+                let podcast_name = $('#plPodcast').val();
+                let short_description = $('#plShortDescription').val();
                 var csrfToken = $('meta[name="csrf-token"]').attr('content');
                 var formData = {
                     _token: csrfToken, // Include CSRF token
-                    firstName: $('#plFirstName').val(),
-                    lastName: $('#plLastName').val(),
+                    first_name: $('#plFirstName').val(),
+                    last_name: $('#plLastName').val(),
                     email: $('#plEmail').val(),
                     contact: $('#plContact').val(),
-                    propertyType: $('#plPropertyType').val(),
-                    zipCode: $('#plZipCode').val(),
-                    country: $('#plCountry').val(),
-                    state: $('#plState').val(),
-                    website: $('#plweb').val(),
-                    businessName: $('#plbrand').val(),
-                    address: $('#plAddress').val(),
-                    status: $('input[name="status"]:checked')
-                        .val(), // Fetch the selected radio button's value
-                    otherCharges: $('#plOtherCharges').is(':checked') ? 'Yes' :
-                    'No', // Convert boolean to string
-                    selectedDate: selectedDate ? selectedDate.dataset.date :
-                    null, // Ensure selectedDate is set
-                    selectedTime: document.querySelector(".btn.selected") ? document.querySelector(
-                        ".btn.selected").textContent : null, // Ensure selectedTime is set
-                    plPropertySaleRent: getCustomerType($('input[name="plPropertySaleRent"]:checked')
-                        .val()) // Map the radio button value
+                    start_time:start_time,
+                    end_time:end_time,
+                    booking_date: booking_data,
+                    booking_room:booking_room,
+                    podcast_name:podcast_name,
+                    short_description:short_description,
                 };
 
                 console.log('Form Data:', formData);
@@ -1823,10 +956,7 @@
                             toastr.success('Your Booking Added Successfully');
                             // Update the booking details section
                             $('#bookingId').text(response.bookingId);
-                            $('#serviceName').text(response.serviceName);
                             $('#dateTime').text(response.dateTime);
-                            $('#location').text(response.location ||
-                                'N/A'); // Use 'N/A' if location is null
                             $('#contactPerson').text(response.contactPerson);
                             $('#contactPersonMain').text(response.contactPerson);
                             $('#contactNumber').text(response.contactNumber);
@@ -1836,16 +966,12 @@
                         } else {
                             // Handle booking failure (if needed)
                             toastr.error('Booking failed. Please try again.');
-                            // $('#success').text("Booking failed. Please try again.");
                         }
                         hideloader()
                     },
                     error: function(xhr, status, error) {
-                        console.error('Error:', error);
-                        // $('#success').text("An error occurred. Please try again.");
                         toastr.error('An error occurred. Please try again.');
                         hideloader()
-
                     }
                 });
             });
@@ -1872,43 +998,61 @@
             function enableDateBtn() {
                 // Select the div with the data-date attribute
                 const dateDiv = document.querySelectorAll('.timeBtn');
-
+                let now = new Date();
                 dateDiv.forEach(ele => {
+                    let slotText = ele.innerText.trim();
+                    let slotTime = slotText.split(" - ")[0]; // Extract start time
+                    let slotDate = new Date();
+
+                    // Convert 12-hour format to 24-hour format
+                    let timeParts = slotTime.match(/(\d+):(\d+) (\wM)/);
+                    if (timeParts) {
+                        let hours = parseInt(timeParts[1], 10);
+                        let minutes = parseInt(timeParts[2], 10);
+                        let amPm = timeParts[3];
+
+                        if (amPm === "PM" && hours !== 12) hours += 12;
+                        if (amPm === "AM" && hours === 12) hours = 0;
+
+                        slotDate.setHours(hours, minutes, 0, 0);
+
+                        // if (slotDate < now) {
+                        //     ele.disabled = true;
+                        //     ele.style.opacity = "0.5"; // Optional styling for disabled slots
+                        //     // ele.style.pointerEvents = "none"; // Prevent clicks
+                        // }
+                    }
                     // Add an onclick event listener
                     ele.addEventListener('click', function() {
-                        // const selectedDate = ele.classList.contains('selected');
-                        // if (selectedDate) {
-                            let timeNextBtn = document.getElementById('timeNextBtn');
-                            timeNextBtn.removeAttribute('disabled')
-                            // updateCurrentIndex(true);
-                        // }
+                        if (!ele.classList.contains('selected')) {
+                            $('.timeBtn').removeClass('selected');
+                            ele.classList.add('selected');
+                        }
+                        let timeNextBtn = document.getElementById('timeNextBtn');
+                        timeNextBtn.removeAttribute('disabled')
                     });
                 })
             }
             enableDateBtn()
-            let timeZoneCurrentIndex;
-            function selectTimeZone() {
-                // let timeZones = document.querySelectorAll('.timeZoneCheck');
-                // timeZones.forEach(ele => {
-                //     ele.checked = false;
-                // })
-                let checkedBox = document.querySelector('.timeZoneCheck:checked');
 
-                let timeZoneNextBtn = document.getElementById('timeZoneNextBtn');
+            function selectRoom(e) {
+                let checkedBox = document.querySelector('.roomCheck:checked');
+                document.querySelectorAll('.roomCheck').forEach(checkbox => {
+                    if (checkbox !== e.target) {
+                        checkbox.checked = false;
+                    }
+                });
+                let roomNextBtn = document.getElementById('roomNextBtn');
                 if (checkedBox) {
-                    // currentIndex = getCurrentTimeIndex();
                     console.log(currentIndex);
-
-                    timeZoneNextBtn.removeAttribute('disabled')
+                    roomNextBtn.removeAttribute('disabled')
                 } else {
-                    timeZoneNextBtn.setAttribute('disabled', true);
+                    roomNextBtn.setAttribute('disabled', true);
                 }
-                displayTimeSlots();
-                enableDateBtn()
             }
-            let timeZones = document.querySelectorAll('.timeZoneCheck');
-            timeZones.forEach(ele => {
-                ele.addEventListener('change', selectTimeZone);
+            let rooms = document.querySelectorAll('.roomCheck');
+            rooms.forEach(ele => {
+                ele.addEventListener('change', selectRoom);
             })
         });
 
@@ -1979,7 +1123,7 @@
                         let radios = document.querySelectorAll('input[name="status"]');
                         for (const radio of radios) {
                             radio.checked = (radio.value === data
-                            .status); // Check the radio if its value matches
+                                .status); // Check the radio if its value matches
                         }
                         toastr.success('Record Fetched Successfully');
                     } else {
@@ -2000,43 +1144,15 @@
     </script>
 
     <script>
-        function check(input)
-        {
+        var minutes = $('#set-time').val();
 
-            var checkboxes = document.getElementsByClassName("timeZoneCheck");
-
-            for(var i = 0; i < checkboxes.length; i++)
-            {
-                //uncheck all
-                if(checkboxes[i].checked == true)
-                {
-                    checkboxes[i].checked = false;
-                }
-            }
-
-            //set checked of clicked object
-            if(input.checked == true)
-            {
-                input.checked = false;
-            }
-            else
-            {
-                input.checked = true;
-            }
-        }
-    </script>
-
-    <script>
-        var minutes = $( '#set-time' ).val();
-
-        var target_date = new Date().getTime() + ((minutes * 60 ) * 1000); // set the countdown date
-        var time_limit = ((minutes * 60 ) * 1000);
+        var target_date = new Date().getTime() + ((minutes * 60) * 1000); // set the countdown date
+        var time_limit = ((minutes * 60) * 1000);
         //set actual timer
         setTimeout(
-            function()
-            {
+            function() {
                 document.getElementById("left").innerHTML = "Timer Stopped";
-            }, time_limit );
+            }, time_limit);
 
         var days, hours, minutes, seconds; // variables for time units
 
@@ -2044,51 +1160,45 @@
 
         getCountdown();
 
-        setInterval(function () { getCountdown(); }, 1000);
+        setInterval(function() {
+            getCountdown();
+        }, 1000);
 
-        function getCountdown(){
-
+        function getCountdown() {
             // find the amount of "seconds" between now and target
             var current_date = new Date().getTime();
             var seconds_left = (target_date - current_date) / 1000;
 
-            if ( seconds_left >= 0 ) {
-                console.log(time_limit);
-                if ( (seconds_left * 1000 ) < ( time_limit / 2 ) )  {
-                    $( '#tiles' ).removeClass('color-full');
-                    $( '#tiles' ).addClass('color-half');
+            if (seconds_left >= 0) {
+                if ((seconds_left * 1000) < (time_limit / 2)) {
+                    $('#tiles').removeClass('color-full');
+                    $('#tiles').addClass('color-half');
 
                 }
-                if ( (seconds_left * 1000 ) < ( time_limit / 4 ) )  {
-                    $( '#tiles' ).removeClass('color-half');
-                    $( '#tiles' ).addClass('color-empty');
+                if ((seconds_left * 1000) < (time_limit / 4)) {
+                    $('#tiles').removeClass('color-half');
+                    $('#tiles').addClass('color-empty');
                 }
 
-                days = pad( parseInt(seconds_left / 86400) );
+                days = pad(parseInt(seconds_left / 86400));
                 seconds_left = seconds_left % 86400;
 
-                hours = pad( parseInt(seconds_left / 3600) );
+                hours = pad(parseInt(seconds_left / 3600));
                 seconds_left = seconds_left % 3600;
 
-                minutes = pad( parseInt(seconds_left / 60) );
-                seconds = pad( parseInt( seconds_left % 60 ) );
+                minutes = pad(parseInt(seconds_left / 60));
+                seconds = pad(parseInt(seconds_left % 60));
 
                 // format countdown string + set tag value
-                countdown.innerHTML = "<span>" + hours + ":</span><span>" + minutes + ":</span><span>" + seconds + "</span>";
-
-
-
+                countdown.innerHTML = "<span>" + hours + ":</span><span>" + minutes + ":</span><span>" + seconds +
+                    "</span>";
             }
-
-
-
         }
 
         function pad(n) {
             return (n < 10 ? '0' : '') + n;
         }
     </script>
-
 </body>
 
 </html>

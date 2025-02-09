@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->string('email');
-            $table->string('contact');
-            $table->string('propertyType');
-            $table->string('zipCode');
-            $table->string('country');
-            $table->string('state');
-            $table->string('website')->nullable();
-            $table->string('businessName')->nullable();
-            $table->text('address')->nullable();
-            $table->string('otherCharges')->nullable();
+            $table->string('booking_id')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('contact')->nullable();
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
+            $table->date('booking_date')->nullable();
+            $table->enum('booking_room',['Podcastroom','Conferenceroom'])->nullable();
+            $table->text('podcast_name')->nullable();
+            $table->text('short_description')->nullable();
+
             $table->timestamps();
         });
     }

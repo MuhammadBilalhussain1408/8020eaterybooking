@@ -58,7 +58,9 @@ class BookingController extends Controller
      */
     public function index()
     {
-        return view('components.booking.booking');
+        $booking = Booking::where('created_at', now())->first();
+        // $time = $booking->end_time;
+        return view('components.booking.booking', compact('booking'));
     }
 
     /**
@@ -76,54 +78,28 @@ class BookingController extends Controller
     {
         // Handle the request data
         try {
-            // dd($request);
-            // Validate the incoming request
-            $validated = $request->validate([
-                'firstName' => 'required|string',
-                'lastName' => 'required|string',
-                'email' => 'required|email',
-                'contact' => 'required|string',
-                'propertyType' => 'required|string',
-                'zipCode' => 'required|integer',
-                'country' => 'required|string',
-                'state' => 'required|string',
-                'website' => 'nullable|string',
-                'businessName' => 'nullable|string',
-                'address' => 'nullable|string',
-                'status' => 'nullable|string',
-                'otherCharges' => 'nullable',
-
-            ]);
             $arr = $request->all();
+            $arr['booking_date'] = Carbon::parse($request->booking_date);
             $oldLatestBooking = Booking::latest()->first();
             if ($oldLatestBooking) {
-                $arr['booking_id'] = 'WI-' . sprintf('%04d', $oldLatestBooking->id);
+                $arr['booking_id'] = 'ETRY-' . sprintf('%04d', $oldLatestBooking->id);
             } else {
-                $arr['booking_id'] = 'WI-' . sprintf('%04d', 1);
+                $arr['booking_id'] = 'ETRY-' . sprintf('%04d', 1);
             }
             // Create a new booking entry
             $booking = Booking::create($arr);
+            // dd($booking);
+            // Mail::to($booking->email)->send(new CustomerBookingMail($booking));
 
-
-            $email = $validated['email']; // customer's email address
-
-
-            // Send email to customer with booking details
-
-            Mail::to($email)->send(new CustomerBookingMail($booking));
-
-
-            // Send email to admin with booking details
-            Mail::to('manibahi321@gmail.com')->send(new AdminBookingMail($booking));
-            Mail::to('info@weincentivize.com')->send(new AdminBookingMail($booking));
-            $dateTime = $booking->selectedDate . ' ' . $booking->selectedTime;
+            // // Send email to admin with booking details
+            // Mail::to('manibahi321@gmail.com')->send(new AdminBookingMail($booking));
+            // Mail::to('manibahi321@gmail.com')->send(new AdminBookingMail($booking));
+            // $dateTime = $booking->selectedDate . ' ' . $booking->selectedTime;
             return response()->json([
                 'success' => true,
                 'bookingId' => $booking->booking_id,
-                'serviceName' => $booking->propertyType,
-                'dateTime' => Carbon::parse($dateTime)->format('D - M d Y - h:ia'), // or any relevant date/time
-                'location' => $booking->address,
-                'contactPerson' => $booking->firstName . ' ' . $booking->lastName,
+                'dateTime' => Carbon::parse($booking->booking_date)->format('D - M d Y - h:ia'), // or any relevant date/time
+                'contactPerson' => $booking->first_name . ' ' . $booking->last_name,
                 'contactNumber' => $booking->contact,
             ]);
         } catch (\Exception $e) {
