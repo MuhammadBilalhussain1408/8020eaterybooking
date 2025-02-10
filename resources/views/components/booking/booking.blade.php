@@ -577,7 +577,7 @@
                                                         <h2 class="card-title" style="font-weight: bold;">Appointment
                                                             Booked Successfully!</h2>
                                                         <p class="booking-text">
-                                                            Dear <span id="contactPersonMain">[Contact Name]</span>,
+                                                            Dear <span class="fw-bold" id="contactPersonMain" style="color: #e1612e;">[Contact Name]</span>,
                                                             <br>
                                                             Thank you for scheduling a booking with us! We are excited
                                                             to confirm your appointment and look forward to providing
