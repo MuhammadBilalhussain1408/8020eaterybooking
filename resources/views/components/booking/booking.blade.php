@@ -583,8 +583,8 @@
                                                             to confirm your appointment and look forward to providing
                                                             you with a great experience.
                                                         </p>
-                                                        <h4 style="font-weight: 600; color: black;">
-                                                            Booking Confirmation:
+                                                        <h4 class="text-black fw-bold">
+                                                            Booking Confirmation Details:
                                                         </h4>
                                                         <div class="table-responsive pb-10">
                                                             <table class="table table-bordered"
@@ -626,6 +626,16 @@
                                                                             style="font-size: 20px; color: black; font-weight: 400; width: 75%;">
                                                                             <span id="contactNumber">[Contact
                                                                                 Number]</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><span class="fw-bold"
+                                                                                  style="font-weight: bold; color: black; font-size: 20px; width: 25%;">Contact
+                                                                                Email</span></td>
+                                                                        <td
+                                                                            style="font-size: 20px; color: black; font-weight: 400; width: 75%;">
+                                                                            <span id="contactNumber">[Contact
+                                                                                Email]</span>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>

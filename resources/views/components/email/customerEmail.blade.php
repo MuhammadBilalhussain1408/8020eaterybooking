@@ -94,9 +94,9 @@
                         <td class="sm-py-32 sm-px-24"
                             style="font-family: Montserrat,sans-serif; padding: 48px; text-align: center;"
                             align="center">
-                            <a href="https://weincentivize.com/">
-                                <img src="https://weincentivize.com/assets/images/lo.png" width="250"
-                                     alt="We Incentivize"
+                            <a href="https://8020eatery.com">
+                                <img src="https://8020eatery.com/assets/images/templatelogo.png" width="150"
+                                     alt="8020 Eatery"
                                      style=" border: 0; max-width: 100%; line-height: 100%; vertical-align: middle;">
                             </a>
                         </td>
@@ -109,10 +109,10 @@
                                 <tr>
                                     <td class="sm-px-24"
                                         style="background-color: #ffffff; border-radius: 4px; font-family: Montserrat, -apple-system, 'Segoe UI', sans-serif; font-size: 14px; line-height: 24px; padding: 48px; text-align: left; color: black;">
-                                        <p style="font-weight: 700; font-size: 20px; margin-top: 0; color: #ff5850; text-align: center;">
+                                        <p style="font-family: 'DM Sans',serif;font-weight: 700; font-size: 22px; margin-top: 0; color: #ff5850; text-align: center;">
                                             Hi "{{ $contactPerson }}",
                                         </p>
-                                        <p style=" font-size: 16px; margin-top: 0; text-align: center;">
+                                        <p style="font-family: 'DM Sans',serif; font-size: 22px; margin-top: 0; text-align: center;">
                                             Your Booking ID number is: <span style="font-weight: bold;">{{ $booking->booking_id }}.</span>
                                             Thank you for booking with us! We have received your appointment request,
                                             and it is currently
@@ -120,14 +120,14 @@
                                             confirm your appointment shortly.
                                             You’ll receive a confirmation email once your booking is approved.
                                         </p>
-                                        <table style="text-align: left;width: 100%;border-collapse: collapse;">
+                                        <table style="font-family: 'DM Sans',serif;text-align: left;width: 100%;border-collapse: collapse;">
                                             <tr>
                                                 <td style="width: 30%;border: 1px solid #000;padding: 5px;">
-                                                    <span style="font-weight: bold; color: black; font-size: 16px;">
+                                                    <span style="font-weight: bold; color: black; font-size: 18px;">
                                                         Booking ID
                                                     </span>
                                                 </td>
-                                                <td style="padding: 5px;font-size: 16px; color: black; font-weight: 400;border: 1px solid #000;">
+                                                <td style="padding: 5px;font-size: 18px; color: black; font-weight: 400;border: 1px solid #000;">
                                                     <span id="bookingId">
                                                         {{$booking->booking_id}}
                                                     </span>
@@ -135,22 +135,34 @@
                                             </tr>
                                             <tr>
                                                 <td style="border: 1px solid #000;padding: 5px;">
-                                                    <span style="font-weight: bold; color: black; font-size: 16px; width: 25%;">
-                                                        Service Name
+                                                    <span style="font-weight: bold; color: black; font-size: 18px; width: 25%;">
+                                                        Podcast Name
                                                     </span>
                                                 </td>
-                                                <td style="padding: 5px;border: 1px solid #000;font-size: 16px; color: black; font-weight: 400; width: 75%;">
+                                                <td style="padding: 5px;border: 1px solid #000;font-size: 18px; color: black; font-weight: 400; width: 75%;">
                                                     <span id="serviceName">
-                                                        {{$serviceName}}
+                                                        {{$PodcastName}}
                                                     </span>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="border: 1px solid #000;padding: 5px;">
-                                                    <span style="font-weight: bold; color: black; font-size: 16px; width: 25%;">
+                                                    <span style="font-weight: bold; color: black; font-size: 18px; width: 25%;">
+                                                        Short Description
+                                                    </span>
+                                                </td>
+                                                <td style="padding: 5px;border: 1px solid #000;font-size: 18px; color: black; font-weight: 400; width: 75%;">
+                                                    <span id="location">
+                                                        {{$Description}}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 1px solid #000;padding: 5px;">
+                                                    <span style="font-weight: bold; color: black; font-size: 18px; width: 25%;">
                                                         Date & Time</span>
                                                 </td>
-                                                <td style="padding: 5px;border: 1px solid #000;font-size: 16px; color: black; font-weight: 400; width: 75%;">
+                                                <td style="padding: 5px;border: 1px solid #000;font-size: 18px; color: black; font-weight: 400; width: 75%;">
                                                     <span id="dateTime">
                                                         {{$dateTime}}
                                                     </span>
@@ -158,23 +170,11 @@
                                             </tr>
                                             <tr>
                                                 <td style="border: 1px solid #000;padding: 5px;">
-                                                    <span style="font-weight: bold; color: black; font-size: 16px; width: 25%;">
-                                                        Location
-                                                    </span>
-                                                </td>
-                                                <td style="padding: 5px;border: 1px solid #000;font-size: 16px; color: black; font-weight: 400; width: 75%;">
-                                                    <span id="location">
-                                                        {{$location}}
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="border: 1px solid #000;padding: 5px;">
-                                                    <span style="font-weight: bold; color: black; font-size: 16px; width: 25%;">
+                                                    <span style="font-weight: bold; color: black; font-size: 18px; width: 25%;">
                                                         Contact Person
                                                     </span>
                                                 </td>
-                                                <td style="padding: 5px;border: 1px solid #000;font-size: 16px; color: black; font-weight: 400; width: 75%;">
+                                                <td style="padding: 5px;border: 1px solid #000;font-size: 18px; color: black; font-weight: 400; width: 75%;">
                                                     <span id="contactPerson">
                                                         {{$contactPerson}}
                                                     </span>
@@ -182,32 +182,32 @@
                                             </tr>
                                             <tr>
                                                 <td style="border: 1px solid #000;padding: 5px;">
-                                                    <span style="font-weight: bold; color: black; font-size: 16px; width: 25%;">
+                                                    <span style="font-weight: bold; color: black; font-size: 18px; width: 25%;">
                                                         Contact Number
                                                     </span>
                                                 </td>
-                                                <td style="padding: 5px;border: 1px solid #000;font-size: 16px; color: black; font-weight: 400; width: 75%;">
+                                                <td style="padding: 5px;border: 1px solid #000;font-size: 18px; color: black; font-weight: 400; width: 75%;">
                                                     <span id="contactNumber">
                                                         {{$contactNumber}}
                                                     </span>
                                                 </td>
                                             </tr>
                                         </table>
-                                        <table style="width: 100%;padding-top: 12px;">
+                                        <table style="font-family: 'DM Sans',serif;width: 100%;font-size: 18px;padding-top: 2rem;">
                                             <tr>
-                                                <td colspan="2">The We Incentivize Team</td>
+                                                <td colspan="2"><strong>The 80/20 Eatery Team</strong></td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 50%;">Phone</td>
-                                                <td style="width: 50%;"> +1 (888) 994-8158</td>
+                                                <td style="width: 50%;">(+1) 757-271-4001</td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 50%;">Email</td>
-                                                <td style="width: 50%;">info@weincentivize.com</td>
+                                                <td style="width: 50%;">info@8020eatery.com</td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 50%;">Website</td>
-                                                <td style="width: 50%;">www.weincentivize.com</td>
+                                                <td style="width: 50%;">www.8020eatery.com</td>
                                             </tr>
                                         </table>
                                     </td>
