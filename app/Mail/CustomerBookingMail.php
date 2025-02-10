@@ -33,7 +33,7 @@ class CustomerBookingMail extends Mailable
 
         // Additional data
         $location = $this->booking->address;
-        $contactPerson = $this->booking->firstName . ' ' . $this->booking->lastName;
+        $contactPerson = $this->booking->first_name . ' ' . $this->booking->last_name;
         $contactNumber = $this->booking->contact;
 
         // Build the email
