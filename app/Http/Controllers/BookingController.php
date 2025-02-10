@@ -58,11 +58,40 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $booking = Booking::where('created_at', now())->first();
-        // $time = $booking->end_time;
-        return view('components.booking.booking', compact('booking'));
+        return view('components.booking.booking');
     }
+    public function getSelectedDateBooking(Request $request)
+    {
+        $selectedDate = Carbon::parse($request->booking_date);
+        $podCastBooking = Booking::whereDate('booking_date', $selectedDate)->where('booking_room', 'Podcastroom')->first();
+        $conferenceBooking = Booking::whereDate('booking_date', $selectedDate)->where('booking_room', 'Conferenceroom')->first();
+        $podCastRoomRemainingTime = 0;
+        $conferenceroomRoomRemainingTime = 0;
+        if ($podCastBooking) {
+            $startTime = Carbon::createFromFormat('H:i:s', $podCastBooking->start_time);
+            $endTime = Carbon::createFromFormat('H:i:s', $podCastBooking->end_time);
+            $currentTime = Carbon::now()->format('H:i:s'); // Get current time
 
+            $current = Carbon::createFromFormat('H:i:s', $currentTime);
+            $podCastRoomRemainingTime = $current->diffInMinutes($endTime);
+            $podCastRoomRemainingTimeSec = $current->diffInSeconds($endTime);
+        }
+        if ($conferenceBooking) {
+            $startTime = Carbon::createFromFormat('H:i:s', $conferenceBooking->start_time);
+            $endTime = Carbon::createFromFormat('H:i:s', $conferenceBooking->end_time);
+            $currentTime = Carbon::now()->format('H:i:s'); // Get current time
+
+            $current = Carbon::createFromFormat('H:i:s', $currentTime);
+            $conferenceroomRoomRemainingTime = $current->diffInMinutes($endTime);
+            $conferenceroomRoomRemainingTimeSec = $current->diffInSeconds($endTime);
+        }
+        return response()->json([
+            'cRemainingTime' => $conferenceroomRoomRemainingTime,
+            'cRemainingTimeSec' => $conferenceroomRoomRemainingTimeSec,
+            'pRemainingTime' => $podCastRoomRemainingTime,
+            'pRemainingTimeSec' => $podCastRoomRemainingTimeSec
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -89,18 +118,19 @@ class BookingController extends Controller
             // Create a new booking entry
             $booking = Booking::create($arr);
             // dd($booking);
-            // Mail::to($booking->email)->send(new CustomerBookingMail($booking));
+            Mail::to($booking->email)->send(new CustomerBookingMail($booking));
 
             // // Send email to admin with booking details
-            // Mail::to('manibahi321@gmail.com')->send(new AdminBookingMail($booking));
-            // Mail::to('manibahi321@gmail.com')->send(new AdminBookingMail($booking));
+            Mail::to('bilal.bixosoft@gmail.com')->send(new AdminBookingMail($booking));
+            Mail::to('manibahi321@gmail.com')->send(new AdminBookingMail($booking));
             // $dateTime = $booking->selectedDate . ' ' . $booking->selectedTime;
             return response()->json([
                 'success' => true,
                 'bookingId' => $booking->booking_id,
-                'dateTime' => Carbon::parse($booking->booking_date)->format('D - M d Y - h:ia'), // or any relevant date/time
+                'dateTime' => Carbon::parse($booking->booking_date)->format('M d Y') . ' ' . Carbon::createFromFormat('H:i:s', $booking->start_time)->format('h:i A') . ' - to - ' . Carbon::createFromFormat('H:i:s', $booking->end_time)->format('h:i A'), // or any relevant date/time
                 'contactPerson' => $booking->first_name . ' ' . $booking->last_name,
                 'contactNumber' => $booking->contact,
+                'contactEmail' => $booking->email,
             ]);
         } catch (\Exception $e) {
             // Handle exceptions

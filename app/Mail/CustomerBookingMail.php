@@ -22,7 +22,7 @@ class CustomerBookingMail extends Mailable
     {
         // Retrieve required details
         $booking = $this->booking;
-        $contactPerson = $this->booking->firstName . ' ' . $this->booking->lastName;
+        $contactPerson = $this->booking->first_name . ' ' . $this->booking->last_name;
 
         // Retrieve booking details
         $bookingId = $this->booking->booking_id;
@@ -42,9 +42,7 @@ class CustomerBookingMail extends Mailable
                 'booking' => $booking,
                 'contactPerson' => $contactPerson,
                 'bookingId' => $bookingId,
-                'serviceName' => $serviceName,
-                'dateTime' => Carbon::parse($dateTime)->format('D - M d Y - h:ia'),
-                'location' => $location,
+                'dateTime' => Carbon::parse($booking->booking_date)->format('M d Y') . ' ' . Carbon::createFromFormat('H:i:s', $booking->start_time)->format('h:i A') . ' - to - ' . Carbon::createFromFormat('H:i:s', $booking->end_time)->format('h:i A'),
                 'contactNumber' => $contactNumber,
             ]);
     }

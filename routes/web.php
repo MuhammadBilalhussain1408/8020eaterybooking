@@ -37,6 +37,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 // Route definition using the controller method
 Route::get('/appointment/booking', [BookingController::class, 'index'])->name('appointment.booking');
+Route::post('selected-date-booking', [BookingController::class, 'getSelectedDateBooking']);
 Route::post('/booking/store', [BookingController::class, 'store']);
 Route::get('existing-booking/{id}', [BookingController::class, 'existingBooking']);
 

@@ -191,7 +191,8 @@
                                                     <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                 </button>
                                                 <button class="btn btn-green btn-next nxt-prev-btn" disabled
-                                                    id="calenderNextBtn" type="button">
+                                                    id="calenderNextBtn" type="button"
+                                                    onclick="getSelectedDateBooking()">
                                                     <span
                                                         class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>
                                                     <i class="ti ti-arrow-right ti-xs"></i>
@@ -269,17 +270,10 @@
                                                             <span class="custom-option-title">
                                                                 Content Room Or Podcast Room
                                                             </span>
-                                                            <h5 class="fw-semibold text-black">
-                                                                Room is Not Available: <span><i
-                                                                        class="fa-solid fa-square-xmark"
-                                                                        style="color: #e91e63;"></i></span>
-                                                                <input type="hidden" id="set-time"
-                                                                    value="30" />
-                                                                <div class="mt-2" id="countdown">
-                                                                    <div id='tiles' class="color-full"></div>
-                                                                    <div id ="left" class="countdown-label">Time
-                                                                        Remaining</div>
-                                                                </div>
+                                                            <h5 class="fw-semibold text-black" id="podCastRoomTimer">
+                                                                Room is Available <span><i
+                                                                        class="fa-solid fa-square-check"
+                                                                        style="color: green;"></i></span>
                                                             </h5>
                                                         </span>
                                                         <input class="form-check-input roomCheck" type="checkbox"
@@ -296,21 +290,11 @@
                                                             <span class="custom-option-title">
                                                                 Conference Room
                                                             </span>
-                                                            <h5 class="fw-semibold text-black">
+                                                            <h5 class="fw-semibold text-black"
+                                                                id="conferenceRoomTimer">
                                                                 Room is Available <span><i
                                                                         class="fa-solid fa-square-check"
                                                                         style="color: green;"></i></span>
-                                                                <input type="hidden" id="set-time"
-                                                                    value="30" />
-                                                                <div class="mt-2" id="countdown">
-                                                                    <div id="tiles" class="color-full">
-                                                                        <span>00:</span>
-                                                                        <span>00:</span>
-                                                                        <span>00</span>
-                                                                    </div>
-                                                                    <div id ="left" class="countdown-label">Time
-                                                                        Remaining</div>
-                                                                </div>
                                                             </h5>
                                                         </span>
                                                         <input class="form-check-input roomCheck" type="checkbox"
@@ -577,7 +561,8 @@
                                                         <h2 class="card-title" style="font-weight: bold;">Appointment
                                                             Booked Successfully!</h2>
                                                         <p class="booking-text">
-                                                            Dear <span class="fw-bold" id="contactPersonMain" style="color: #e1612e;">[Contact Name]</span>,
+                                                            Dear <span class="fw-bold" id="contactPersonMain"
+                                                                style="color: #e1612e;">[Contact Name]</span>,
                                                             <br>
                                                             Thank you for scheduling a booking with us! We are excited
                                                             to confirm your appointment and look forward to providing
@@ -630,11 +615,11 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td><span class="fw-bold"
-                                                                                  style="font-weight: bold; color: black; font-size: 20px; width: 25%;">Contact
+                                                                                style="font-weight: bold; color: black; font-size: 20px; width: 25%;">Contact
                                                                                 Email</span></td>
                                                                         <td
                                                                             style="font-size: 20px; color: black; font-weight: 400; width: 75%;">
-                                                                            <span id="contactNumber">[Contact
+                                                                            <span id="contactEmail">[Contact
                                                                                 Email]</span>
                                                                         </td>
                                                                     </tr>
@@ -945,12 +930,12 @@
                     last_name: $('#plLastName').val(),
                     email: $('#plEmail').val(),
                     contact: $('#plContact').val(),
-                    start_time:start_time,
-                    end_time:end_time,
+                    start_time: start_time,
+                    end_time: end_time,
                     booking_date: booking_data,
-                    booking_room:booking_room,
-                    podcast_name:podcast_name,
-                    short_description:short_description,
+                    booking_room: booking_room,
+                    podcast_name: podcast_name,
+                    short_description: short_description,
                 };
 
                 console.log('Form Data:', formData);
@@ -970,6 +955,7 @@
                             $('#contactPerson').text(response.contactPerson);
                             $('#contactPersonMain').text(response.contactPerson);
                             $('#contactNumber').text(response.contactNumber);
+                            $('#contactEmail').text(response.contactEmail);
 
                             // Show the booking details section
                             $('#bookingDetails').show();
@@ -1151,43 +1137,104 @@
                 }
             });
         }
-    </script>
 
-    <script>
-        var minutes = $('#set-time').val();
+        function getSelectedDateBooking() {
+            const dateDiv = document.querySelector('[data-date].selected-date');
+            let booking_data = dateDiv.getAttribute('data-date');
+            $.ajax({
+                url: "{{ url('selected-date-booking') }}",
+                method: 'POST',
+                data: {
+                    '_token': "{{ csrf_token() }}",
+                    'booking_data': booking_data
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.cRemainingTime > 0) {
+                        $('#Conferenceroom').attr('disabled', true);
+                        $('#conferenceRoomTimer').html(`
+                            Room is Not Available: <span>
+                                <i class="fa-solid fa-square-xmark" style="color: #e91e63;"></i>
+                                    </span>
+                            <input type="hidden" id="setconferenceRemaningTime" value="0" />
+                            <div class="mt-2 d-none" id="countdown">
+                                <div id='conferenceTiles' class="color-full"></div>
+                                <div id ="left" class="countdown-label">
+                                    Time Remaining
+                                </div>
+                            </div>`);
+                        // setInterval(function() {
+                        //     getCountdown(response.cRemainingTime, 'conferenceTiles');
+                        // }, 1000);
+                        // startCountdown(response.cRemainingTime);
+                    } else {
+                        $('#Conferenceroom').attr('disabled', false);
+                        $('#conferenceRoomTimer').html(`Room is Available <span>
+                            <i class="fa-solid fa-square-check"
+                                style="color: green;"></i></span>`);
+                    }
+                    if (response.pRemainingTime > 0) {
+                        $('#Podcastroom').attr('disabled', true);
+                        $('#podCastRoomTimer').html(`
+                            Room is Not Available: <span>
+                                <i class="fa-solid fa-square-xmark" style="color: #e91e63;"></i>
+                                    </span>
+                            <input type="hidden" id="setconferenceRemaningTime" value="${response.pRemainingTime}" />
+                            <div class="mt-2 d-none" id="countdown">
+                                <div id='podCastTiles' class="color-full"></div>
+                                <div id ="left" class="countdown-label">
+                                    Time Remaining
+                                </div>
+                            </div>`);
+                        // setInterval(function() {
+                        //     getCountdown(response.pRemainingTime, 'podCastTiles');
+                        // }, 1000);
+                        // startCountdown(response.pRemainingTimeSec);
+                    } else {
+                        $('#Podcastroom').attr('disabled', false);
+                        $('#podCastRoomTimer').html(`Room is Available <span>
+                            <i class="fa-solid fa-square-check"
+                                style="color: green;"></i></span>`);
+                    }
+                },
+            });
+        }
+
+        // var minutes = $('#set-time').val();
 
         var target_date = new Date().getTime() + ((minutes * 60) * 1000); // set the countdown date
-        var time_limit = ((minutes * 60) * 1000);
-        //set actual timer
-        setTimeout(
-            function() {
-                document.getElementById("left").innerHTML = "Timer Stopped";
-            }, time_limit);
+        // //set actual timer
+        // setTimeout(
+        //     function() {
+        //         document.getElementById("left").innerHTML = "Timer Stopped";
+        //     }, time_limit);
 
         var days, hours, minutes, seconds; // variables for time units
 
-        var countdown = document.getElementById("tiles"); // get tag element
 
-        getCountdown();
+        // getCountdown();
 
-        setInterval(function() {
-            getCountdown();
-        }, 1000);
 
-        function getCountdown() {
+        function getCountdown(remMinute, sec) {
+            console.log('function is running',sec);
+
+            var time_limit = ((remMinute * 60) * 1000);
+            console.log(time_limit);
+
+            var countdown = document.getElementById(sec); // get tag element
             // find the amount of "seconds" between now and target
             var current_date = new Date().getTime();
             var seconds_left = (target_date - current_date) / 1000;
 
             if (seconds_left >= 0) {
                 if ((seconds_left * 1000) < (time_limit / 2)) {
-                    $('#tiles').removeClass('color-full');
-                    $('#tiles').addClass('color-half');
+                    $('#' + sec).removeClass('color-full');
+                    $('#' + sec).addClass('color-half');
 
                 }
                 if ((seconds_left * 1000) < (time_limit / 4)) {
-                    $('#tiles').removeClass('color-half');
-                    $('#tiles').addClass('color-empty');
+                    $('#' + sec).removeClass('color-half');
+                    $('#' + sec).addClass('color-empty');
                 }
 
                 days = pad(parseInt(seconds_left / 86400));
@@ -1208,6 +1255,25 @@
         function pad(n) {
             return (n < 10 ? '0' : '') + n;
         }
+
+    function startCountdown(duration) {
+        let timer = duration;
+        let countdownElement = document.getElementById("countdown");
+
+        function updateCountdown() {
+            if (timer >= 0) {
+                let minutes = Math.floor(timer / 60);
+                let seconds = timer % 60;
+                countdownElement.innerHTML = `Remaining Time: ${minutes}m ${seconds}s`;
+                timer--;
+                setTimeout(updateCountdown, 1000);
+            } else {
+                countdownElement.innerHTML = "Time is up!";
+            }
+        }
+
+        updateCountdown();
+    }
     </script>
 </body>
 

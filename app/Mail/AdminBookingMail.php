@@ -21,6 +21,7 @@ class AdminBookingMail extends Mailable
     public function build()
 {
     // Retrieve booking details
+    $booking = $this->booking;
     $bookingId = $this->booking->booking_id;
     $serviceName = $this->booking->propertyType;
 
@@ -29,18 +30,18 @@ class AdminBookingMail extends Mailable
 
     // Additional data
     $location = $this->booking->address;
-    $contactPerson = $this->booking->firstName . ' ' . $this->booking->lastName;
+    $contactPerson = $this->booking->first_name . ' ' . $this->booking->last_name;
     $contactNumber = $this->booking->contact;
 
     // Build the email
     return $this->subject('New Booking Appointment')->view('components.email.adminEmail')
 
         ->with([
+            'booking'=>$booking,
             'bookingId' => $bookingId,
-            'serviceName' => $serviceName,
-            'dateTime' => Carbon::parse($dateTime)->format('D - M d Y - h:ia'),
-            'location' => $location,
+            'dateTime' => Carbon::parse($booking->booking_date)->format('M d Y') . ' ' . Carbon::createFromFormat('H:i:s', $booking->start_time)->format('h:i A') . ' - to - ' . Carbon::createFromFormat('H:i:s', $booking->end_time)->format('h:i A'),
             'contactPerson' => $contactPerson,
+            'contactEmail' => $booking->email,
             'contactNumber' => $contactNumber,
         ]);
 }

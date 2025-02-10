@@ -141,7 +141,7 @@
                                                 </td>
                                                 <td style="padding: 5px;border: 1px solid #000;font-size: 18px; color: black; font-weight: 400; width: 75%;">
                                                     <span id="serviceName">
-                                                        {{$PodcastName}}
+                                                        {{$booking->podcast_name}}
                                                     </span>
                                                 </td>
                                             </tr>
@@ -153,7 +153,7 @@
                                                 </td>
                                                 <td style="padding: 5px;border: 1px solid #000;font-size: 18px; color: black; font-weight: 400; width: 75%;">
                                                     <span id="location">
-                                                        {{$Description}}
+                                                        {{$booking->short_description}}
                                                     </span>
                                                 </td>
                                             </tr>
