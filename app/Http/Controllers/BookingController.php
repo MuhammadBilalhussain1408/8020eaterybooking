@@ -121,8 +121,8 @@ class BookingController extends Controller
             Mail::to($booking->email)->send(new CustomerBookingMail($booking));
 
             // // Send email to admin with booking details
-            Mail::to('bilal.bixosoft@gmail.com')->send(new AdminBookingMail($booking));
             Mail::to('manibahi321@gmail.com')->send(new AdminBookingMail($booking));
+            Mail::to('info@8020eatery.com')->send(new AdminBookingMail($booking));
             // $dateTime = $booking->selectedDate . ' ' . $booking->selectedTime;
             return response()->json([
                 'success' => true,

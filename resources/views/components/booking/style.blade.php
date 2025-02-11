@@ -695,6 +695,9 @@
         text-transform: uppercase;
         display: inline-block;
     }
+    a {
+        color: #e1612e;
+    }
 
 
 

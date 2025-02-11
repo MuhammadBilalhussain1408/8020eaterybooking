@@ -8,7 +8,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Appointment Booking | WeIncentivize</title>
+    <title>Appointment Booking | 80/20 Eatery</title>
 
     <meta name="description" content="" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -364,60 +364,60 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-xl">
-                                                        <div class="form-check custom-option custom-option-icon">
-                                                            <label class="form-check-label custom-option-content"
-                                                                for="customRadioRent">
-                                                                <span class="custom-option-body">
-                                                                    <svg width="41" height="40"
-                                                                        viewBox="0 0 41 40" fill="none"
-                                                                        xmlns="http://www.w3.org/2000/svg">
-                                                                        <path
-                                                                            d="M6.5 30C6.5 30.663 6.76339 31.2989 7.23223 31.7678C7.70107 32.2366 8.33696 32.5 9 32.5H34C34.3315 32.5 34.6495 32.3683 34.8839 32.1339C35.1183 31.8995 35.25 31.5815 35.25 31.25V13.75C35.25 13.4185 35.1183 13.1005 34.8839 12.8661C34.6495 12.6317 34.3315 12.5 34 12.5H9C8.33696 12.5 7.70107 12.2366 7.23223 11.7678C6.76339 11.2989 6.5 10.663 6.5 10V30Z"
-                                                                            fill="currentColor" fill-opacity="0.2" />
-                                                                        <path
-                                                                            d="M6.5 10V30C6.5 30.663 6.76339 31.2989 7.23223 31.7678C7.70107 32.2366 8.33696 32.5 9 32.5H34C34.3315 32.5 34.6495 32.3683 34.8839 32.1339C35.1183 31.8995 35.25 31.5815 35.25 31.25V13.75C35.25 13.4185 35.1183 13.1005 34.8839 12.8661C34.6495 12.6317 34.3315 12.5 34 12.5H9C8.33696 12.5 7.70107 12.2366 7.23223 11.7678C6.76339 11.2989 6.5 10.663 6.5 10ZM6.5 10C6.5 9.33696 6.76339 8.70107 7.23223 8.23223C7.70107 7.76339 8.33696 7.5 9 7.5H30.25"
-                                                                            stroke="currentColor" stroke-width="2"
-                                                                            stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
-                                                                        <path
-                                                                            d="M28.375 24.375C29.4105 24.375 30.25 23.5355 30.25 22.5C30.25 21.4645 29.4105 20.625 28.375 20.625C27.3395 20.625 26.5 21.4645 26.5 22.5C26.5 23.5355 27.3395 24.375 28.375 24.375Z"
-                                                                            fill="currentColor" />
-                                                                    </svg>
+{{--                                                    <div class="col-xl">--}}
+{{--                                                        <div class="form-check custom-option custom-option-icon">--}}
+{{--                                                            <label class="form-check-label custom-option-content"--}}
+{{--                                                                for="customRadioRent">--}}
+{{--                                                                <span class="custom-option-body">--}}
+{{--                                                                    <svg width="41" height="40"--}}
+{{--                                                                        viewBox="0 0 41 40" fill="none"--}}
+{{--                                                                        xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                                        <path--}}
+{{--                                                                            d="M6.5 30C6.5 30.663 6.76339 31.2989 7.23223 31.7678C7.70107 32.2366 8.33696 32.5 9 32.5H34C34.3315 32.5 34.6495 32.3683 34.8839 32.1339C35.1183 31.8995 35.25 31.5815 35.25 31.25V13.75C35.25 13.4185 35.1183 13.1005 34.8839 12.8661C34.6495 12.6317 34.3315 12.5 34 12.5H9C8.33696 12.5 7.70107 12.2366 7.23223 11.7678C6.76339 11.2989 6.5 10.663 6.5 10V30Z"--}}
+{{--                                                                            fill="currentColor" fill-opacity="0.2" />--}}
+{{--                                                                        <path--}}
+{{--                                                                            d="M6.5 10V30C6.5 30.663 6.76339 31.2989 7.23223 31.7678C7.70107 32.2366 8.33696 32.5 9 32.5H34C34.3315 32.5 34.6495 32.3683 34.8839 32.1339C35.1183 31.8995 35.25 31.5815 35.25 31.25V13.75C35.25 13.4185 35.1183 13.1005 34.8839 12.8661C34.6495 12.6317 34.3315 12.5 34 12.5H9C8.33696 12.5 7.70107 12.2366 7.23223 11.7678C6.76339 11.2989 6.5 10.663 6.5 10ZM6.5 10C6.5 9.33696 6.76339 8.70107 7.23223 8.23223C7.70107 7.76339 8.33696 7.5 9 7.5H30.25"--}}
+{{--                                                                            stroke="currentColor" stroke-width="2"--}}
+{{--                                                                            stroke-linecap="round"--}}
+{{--                                                                            stroke-linejoin="round" />--}}
+{{--                                                                        <path--}}
+{{--                                                                            d="M28.375 24.375C29.4105 24.375 30.25 23.5355 30.25 22.5C30.25 21.4645 29.4105 20.625 28.375 20.625C27.3395 20.625 26.5 21.4645 26.5 22.5C26.5 23.5355 27.3395 24.375 28.375 24.375Z"--}}
+{{--                                                                            fill="currentColor" />--}}
+{{--                                                                    </svg>--}}
 
-                                                                    <span class="custom-option-title">Existing
-                                                                        Customer</span>
-                                                                </span>
-                                                                <input name="plPropertySaleRent"
-                                                                    class="form-check-input" type="radio"
-                                                                    value="2" id="customRadioRent"
-                                                                    onchange="handleRadioChange()" />
-                                                            </label>
-                                                        </div>
-                                                    </div>
+{{--                                                                    <span class="custom-option-title">Existing--}}
+{{--                                                                        Customer</span>--}}
+{{--                                                                </span>--}}
+{{--                                                                <input name="plPropertySaleRent"--}}
+{{--                                                                    class="form-check-input" type="radio"--}}
+{{--                                                                    value="2" id="customRadioRent"--}}
+{{--                                                                    onchange="handleRadioChange()" />--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
                                                 </div>
                                             </div>
 
                                             {{-- Existing Customer Fetch Details --}}
 
-                                            <div class="col-sm-12 d-none" id="wi_div">
-                                                <label class="form-label pb-2" for="plContact">Enter Your Previous
-                                                    Booking
-                                                    Code</label>
-                                                <div class="input-group input-group-merge">
-                                                    <span
-                                                        style="background: black;border: black;padding: 15px;font-size: 19px;color: white;font-weight: 500;"
-                                                        class="input-group-text">WI — </span>
-                                                    <input type="text" name=""
-                                                        style="padding-left: 7px !important;font-size: 19px;"
-                                                        class="form-control contact-number-mask" placeholder="0000"
-                                                        id="wi_input_data" required />
-                                                    <button class="btn btn-green" type="button"
-                                                        style="font-size: 19px;font-weight: bolder;"
-                                                        id="button-addon2" onclick="fetchExistingRecord()">Fetch Data
-                                                    </button>
-                                                </div>
-                                            </div>
+{{--                                            <div class="col-sm-12 d-none" id="wi_div">--}}
+{{--                                                <label class="form-label pb-2" for="plContact">Enter Your Previous--}}
+{{--                                                    Booking--}}
+{{--                                                    Code</label>--}}
+{{--                                                <div class="input-group input-group-merge">--}}
+{{--                                                    <span--}}
+{{--                                                        style="background: black;border: black;padding: 15px;font-size: 19px;color: white;font-weight: 500;"--}}
+{{--                                                        class="input-group-text">WI — </span>--}}
+{{--                                                    <input type="text" name=""--}}
+{{--                                                        style="padding-left: 7px !important;font-size: 19px;"--}}
+{{--                                                        class="form-control contact-number-mask" placeholder="0000"--}}
+{{--                                                        id="wi_input_data" required />--}}
+{{--                                                    <button class="btn btn-green" type="button"--}}
+{{--                                                        style="font-size: 19px;font-weight: bolder;"--}}
+{{--                                                        id="button-addon2" onclick="fetchExistingRecord()">Fetch Data--}}
+{{--                                                    </button>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
                                             <div class="row pt-5" id="existngCustomer">
                                                 {{-- Existing Customer Fetch Details --}}
                                                 <div class="col-sm-6 pt-3">
@@ -453,11 +453,17 @@
                                                             name="plOtherCharges" id="plOtherCharges" />
                                                         <label class="form-check-label" for="plOtherCharges">
                                                             By proceeding, you confirm that you have read and agree to
-                                                            <a href="https://weincentivize.com/terms-and-conditions"
-                                                                target="_blank">Terms of Use</a> & <a
-                                                                href="https://weincentivize.com/privacy-policy"
-                                                                target="_blank">
-                                                                Privacy Notice.</a>
+                                                            <span class="fw-bold">
+                                                                <a href="https://8020eatery.com/terms-and-conditions"
+                                                                   target="_blank">Terms of Use</a>
+                                                            </span>
+                                                            &
+                                                            <span class="fw-bold">
+                                                                <a href="https://8020eatery.com/privacy-policy"
+                                                                   target="_blank">
+                                                                Privacy Policy.
+                                                            </a>
+                                                            </span>
                                                         </label>
                                                     </div>
                                                 </div>
