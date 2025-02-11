@@ -191,8 +191,7 @@
                                                     <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                 </button>
                                                 <button class="btn btn-green btn-next nxt-prev-btn" disabled
-                                                    id="calenderNextBtn" type="button"
-                                                    onclick="getSelectedDateBooking()">
+                                                    id="calenderNextBtn" type="button">
                                                     <span
                                                         class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>
                                                     <i class="ti ti-arrow-right ti-xs"></i>
@@ -248,7 +247,7 @@
                                                     <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                 </button>
                                                 <button type="button" class="btn btn-green btn-next nxt-prev-btn"
-                                                    id="timeNextBtn" disabled>
+                                                    id="timeNextBtn" onclick="getSelectedDateBooking()" disabled>
                                                     <span
                                                         class="align-middle d-sm-inline-block d-none me-sm-2">Next</span>
                                                     <i class="ti ti-arrow-right ti-xs"></i>
@@ -1147,12 +1146,17 @@
         function getSelectedDateBooking() {
             const dateDiv = document.querySelector('[data-date].selected-date');
             let booking_data = dateDiv.getAttribute('data-date');
+            let TimeSelected = document.querySelector('.timeBtn.selected');
+            let start_time = TimeSelected?.getAttribute('data-start_time');
+            let end_time = TimeSelected?.getAttribute('data-end_time');
             $.ajax({
                 url: "{{ url('selected-date-booking') }}",
                 method: 'POST',
                 data: {
                     '_token': "{{ csrf_token() }}",
-                    'booking_data': booking_data
+                    'booking_data': booking_data,
+                    'start_time': start_time,
+                    'end_time': end_time,
                 },
                 success: function(response) {
                     console.log(response);
@@ -1163,7 +1167,7 @@
                                 <i class="fa-solid fa-square-xmark" style="color: #e91e63;"></i>
                                     </span>
                             <input type="hidden" id="setconferenceRemaningTime" value="0" />
-                            <div class="mt-2 d-none" id="countdown">
+                            <div class="mt-2" id="countdown">
                                 <div id='conferenceTiles' class="color-full"></div>
                                 <div id ="left" class="countdown-label">
                                     Time Remaining
@@ -1172,7 +1176,7 @@
                         // setInterval(function() {
                         //     getCountdown(response.cRemainingTime, 'conferenceTiles');
                         // }, 1000);
-                        // startCountdown(response.cRemainingTime);
+                        startCountdown(response.cRemainingTime, 'conferenceTiles');
                     } else {
                         $('#Conferenceroom').attr('disabled', false);
                         $('#conferenceRoomTimer').html(`Room is Available <span>
@@ -1186,7 +1190,7 @@
                                 <i class="fa-solid fa-square-xmark" style="color: #e91e63;"></i>
                                     </span>
                             <input type="hidden" id="setconferenceRemaningTime" value="${response.pRemainingTime}" />
-                            <div class="mt-2 d-none" id="countdown">
+                            <div class="mt-2" id="countdown">
                                 <div id='podCastTiles' class="color-full"></div>
                                 <div id ="left" class="countdown-label">
                                     Time Remaining
@@ -1195,7 +1199,7 @@
                         // setInterval(function() {
                         //     getCountdown(response.pRemainingTime, 'podCastTiles');
                         // }, 1000);
-                        // startCountdown(response.pRemainingTimeSec);
+                        startCountdown(response.pRemainingTimeSec, 'podCastTiles');
                     } else {
                         $('#Podcastroom').attr('disabled', false);
                         $('#podCastRoomTimer').html(`Room is Available <span>
@@ -1222,7 +1226,7 @@
 
 
         function getCountdown(remMinute, sec) {
-            console.log('function is running',sec);
+            console.log('function is running', sec);
 
             var time_limit = ((remMinute * 60) * 1000);
             console.log(time_limit);
@@ -1262,24 +1266,30 @@
             return (n < 10 ? '0' : '') + n;
         }
 
-    function startCountdown(duration) {
-        let timer = duration;
-        let countdownElement = document.getElementById("countdown");
+        function startCountdown(duration, sec) {
+            let timer = duration;
+            let countdownElement = document.getElementById(sec);
 
-        function updateCountdown() {
-            if (timer >= 0) {
-                let minutes = Math.floor(timer / 60);
-                let seconds = timer % 60;
-                countdownElement.innerHTML = `Remaining Time: ${minutes}m ${seconds}s`;
-                timer--;
-                setTimeout(updateCountdown, 1000);
-            } else {
-                countdownElement.innerHTML = "Time is up!";
+            function updateCountdown() {
+                if (timer >= 0) {
+                    let hours = Math.floor(timer / 3600);
+                    let minutes = Math.floor((timer % 3600) / 60);
+                    let seconds = timer % 60;
+                    if (hours > 0) {
+                        countdownElement.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
+                    } else {
+                        countdownElement.innerHTML = `${minutes}m ${seconds}s`;
+
+                    }
+                    timer--;
+                    setTimeout(updateCountdown, 1000);
+                } else {
+                    countdownElement.innerHTML = "Time is up!";
+                }
             }
-        }
 
-        updateCountdown();
-    }
+            updateCountdown();
+        }
     </script>
 </body>
 

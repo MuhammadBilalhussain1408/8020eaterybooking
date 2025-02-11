@@ -63,28 +63,40 @@ class BookingController extends Controller
     public function getSelectedDateBooking(Request $request)
     {
         $selectedDate = Carbon::parse($request->booking_date);
-        $podCastBooking = Booking::whereDate('booking_date', $selectedDate)->where('booking_room', 'Podcastroom')->first();
-        $conferenceBooking = Booking::whereDate('booking_date', $selectedDate)->where('booking_room', 'Conferenceroom')->first();
+        $start_time = $request->start_time;
+        $end_time = $request->end_time;
+        $podCastBooking = Booking::whereDate('booking_date', $selectedDate)
+        // ->where('start_time', $start_time)->where('end_time', $end_time)
+        ->where('booking_room', 'Podcastroom')->first();
+        $conferenceBooking = Booking::whereDate('booking_date', $selectedDate)
+        // ->where('start_time', $start_time)->where('end_time', $end_time)
+        ->where('booking_room', 'Conferenceroom')->first();
         $podCastRoomRemainingTime = 0;
+        $podCastRoomRemainingTimeSec = 0;
         $conferenceroomRoomRemainingTime = 0;
+        $conferenceroomRoomRemainingTimeSec = 0;
         if ($podCastBooking) {
             $startTime = Carbon::createFromFormat('H:i:s', $podCastBooking->start_time);
             $endTime = Carbon::createFromFormat('H:i:s', $podCastBooking->end_time);
             $currentTime = Carbon::now()->format('H:i:s'); // Get current time
-
             $current = Carbon::createFromFormat('H:i:s', $currentTime);
-            $podCastRoomRemainingTime = $current->diffInMinutes($endTime);
-            $podCastRoomRemainingTimeSec = $current->diffInSeconds($endTime);
+            if ($current->lt($endTime)) {
+                $podCastRoomRemainingTime = $current->diffInMinutes($endTime);
+                $podCastRoomRemainingTimeSec = $current->diffInSeconds($endTime);
+            }
         }
         if ($conferenceBooking) {
             $startTime = Carbon::createFromFormat('H:i:s', $conferenceBooking->start_time);
             $endTime = Carbon::createFromFormat('H:i:s', $conferenceBooking->end_time);
             $currentTime = Carbon::now()->format('H:i:s'); // Get current time
-
             $current = Carbon::createFromFormat('H:i:s', $currentTime);
-            $conferenceroomRoomRemainingTime = $current->diffInMinutes($endTime);
-            $conferenceroomRoomRemainingTimeSec = $current->diffInSeconds($endTime);
+            if ($current->lt($endTime)) {
+                $conferenceroomRoomRemainingTime = $current->diffInMinutes($endTime);
+                $conferenceroomRoomRemainingTimeSec = $current->diffInSeconds($endTime);
+            }
+            // dd($podCastBooking, $conferenceBooking, $current, $current->lt($endTime), $endTime->diffInMinutes($current));
         }
+
         return response()->json([
             'cRemainingTime' => $conferenceroomRoomRemainingTime,
             'cRemainingTimeSec' => $conferenceroomRoomRemainingTimeSec,
