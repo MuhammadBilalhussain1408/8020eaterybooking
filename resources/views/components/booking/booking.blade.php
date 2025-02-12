@@ -114,7 +114,7 @@
                                     </button>
                                 </div>
                                 <div class="line"></div>
-                                <div class="step" data-target="#property-details">
+                                <div class="step" data-target="#time-zone">
                                     <button type="button" class="step-trigger">
                                         <span class="bs-stepper-circle"><i class="fa-solid fa-clock"></i></span>
                                         <span class="bs-stepper-label">
@@ -123,7 +123,7 @@
                                     </button>
                                 </div>
                                 <div class="line"></div>
-                                <div class="step" data-target="#time-zone">
+                                <div class="step" data-target="#property-details">
                                     <button type="button" class="step-trigger">
                                         <span class="bs-stepper-circle"><i class="fa-solid fa-globe"></i></span>
                                         <span class="bs-stepper-label">
@@ -201,7 +201,7 @@
                                     </div>
 
                                     <!-- Time Format -->
-                                    <div id="property-details" class="content">
+                                    <div id="time-zone" class="content">
                                         <div class="row g-6">
 
                                             <div class="col-md-12 p-6">
@@ -257,11 +257,11 @@
                                     </div>
 
                                     <!-- Time Zone -->
-                                    <div id="time-zone" class="content">
+                                    <div id="property-details" class="content">
                                         <div class="row g-6">
                                             <h4 class="text-black">Select Room</h4>
                                             <div class="col-md-6 mb-md-0 mb-5">
-                                                <div class="form-check custom-option custom-option-icon">
+                                                <div class="form-check custom-option custom-option-icon roomCheckDiv">
                                                     <label class="form-check-label custom-option-content"
                                                         for="Podcastroom">
                                                         <span class="custom-option-body">
@@ -281,7 +281,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-md-0 mb-5">
-                                                <div class="form-check custom-option custom-option-icon">
+                                                <div class="form-check custom-option custom-option-icon roomCheckDiv">
                                                     <label class="form-check-label custom-option-content"
                                                         for="Conferenceroom">
                                                         <span class="custom-option-body">
@@ -479,80 +479,6 @@
                                                 </button>
 
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Social Media Details -->
-                                    <div id="property-area" class="content">
-                                        <div class="row g-6">
-
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="plweb">Current Website or Social
-                                                    Media Page</label>
-                                                <input type="text" id="plweb" name="plweb"
-                                                    class="form-control" placeholder="Website or Social Media Page" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="plbrand">Name Of Business or
-                                                    Brand
-                                                </label>
-                                                <input type="text" id="plbrand" name="plbrand"
-                                                    class="form-control" placeholder="Business or Brand Name" />
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label class="form-label" for="plAddress">Address</label>
-                                                <textarea required id="plAddress" name="plAddress" class="form-control" rows="3"
-                                                    placeholder="12, Business Park"></textarea>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <p class="mb-2 form-label">Are You Looking To</p>
-                                                <div style="display: grid; grid-template-columns: 1fr 1fr;">
-                                                    <div class="form-check my-2 ms-2">
-                                                        <input class="form-check-input" type="radio" name="status"
-                                                            id="plUnderConstruction" value="Schedule Consultation" />
-                                                        <label class="form-check-label"
-                                                            for="plUnderConstruction">Schedule Consultation</label>
-                                                    </div>
-                                                    <div class="form-check my-2 ms-2">
-                                                        <input class="form-check-input" type="radio" name="status"
-                                                            id="plReadyToMoveRadio" value="Join Our Team" />
-                                                        <label class="form-check-label" for="plReadyToMoveRadio">Join
-                                                            Our Team</label>
-                                                    </div>
-                                                    <div class="form-check my-2 ms-2">
-                                                        <input class="form-check-input" type="radio" name="status"
-                                                            id="plNewProperty" value="Inquire About Partnering" />
-                                                        <label class="form-check-label" for="plNewProperty">Inquire
-                                                            About Partnering</label>
-                                                    </div>
-                                                    <div class="form-check my-2 ms-2">
-                                                        <input class="form-check-input" type="radio" name="status"
-                                                            id="plResaleProperty" value="Learn More" />
-                                                        <label class="form-check-label" for="plResaleProperty">Learn
-                                                            More</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <input type="hidden" id="status" name="status">
-                                            <div class="col-md-12 pt-5 pb-5">
-                                                <div class="form-check my-2 ms-2">
-                                                    <input class="form-check-input" required type="checkbox"
-                                                        name="plOtherCharges" id="plOtherCharges" />
-                                                    <label class="form-check-label" for="plOtherCharges">
-                                                        By proceeding, you confirm that you have read and agree to <a
-                                                            href="https://weincentivize.com/terms-and-conditions"
-                                                            target="_blank">Terms of Use</a> & <a
-                                                            href="https://weincentivize.com/privacy-policy"
-                                                            target="_blank">
-                                                            Privacy Notice.</a>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-
-
                                         </div>
                                     </div>
 
@@ -917,9 +843,8 @@
             }
 
 
-            $('#socialMediaButton').on('click', function(e) {
-                e.preventDefault();
-                showloader()
+            window.submitFun =  (e) => {
+                showloader();
                 const dateDiv = document.querySelector('[data-date].selected-date');
                 let booking_data = dateDiv.getAttribute('data-date');
                 let TimeSelected = document.querySelector('.timeBtn.selected');
@@ -975,7 +900,7 @@
                         hideloader()
                     }
                 });
-            });
+            }
 
 
             function enableCalendarBtn() {
@@ -1038,11 +963,14 @@
 
             function selectRoom(e) {
                 let checkedBox = document.querySelector('.roomCheck:checked');
+                $('.roomCheckDiv').removeClass('checked');
                 document.querySelectorAll('.roomCheck').forEach(checkbox => {
                     if (checkbox !== e.target) {
                         checkbox.checked = false;
                     }
                 });
+
+                e.target.parentElement.parentElement.classList.add('checked')
                 let roomNextBtn = document.getElementById('roomNextBtn');
                 if (checkedBox) {
                     console.log(currentIndex);

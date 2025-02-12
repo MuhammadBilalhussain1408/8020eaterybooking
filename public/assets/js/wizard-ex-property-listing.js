@@ -73,9 +73,7 @@
         const wizardPropertyListingFormStep1 = wizardPropertyListingForm.querySelector('#personal-details');
         const wizardPropertyListingFormStep2 = wizardPropertyListingForm.querySelector('#time-zone');
         const wizardPropertyListingFormStep3 = wizardPropertyListingForm.querySelector('#property-details');
-        const wizardPropertyListingFormStep4 = wizardPropertyListingForm.querySelector('#property-features');
-        const wizardPropertyListingFormStep5 = wizardPropertyListingForm.querySelector('#property-area');
-        const wizardPropertyListingFormStep6 = wizardPropertyListingForm.querySelector('#price-details');
+        const wizardPropertyListingFormStep4 = wizardPropertyListingForm.querySelector('#property-features');        const wizardPropertyListingFormStep6 = wizardPropertyListingForm.querySelector('#price-details');
         // Wizard next prev button
         const wizardPropertyListingNext = [].slice.call(wizardPropertyListingForm.querySelectorAll('.btn-next'));
         const wizardPropertyListingPrev = [].slice.call(wizardPropertyListingForm.querySelectorAll('.btn-prev'));
@@ -176,18 +174,17 @@
         const FormValidation3 = FormValidation.formValidation(wizardPropertyListingFormStep3, {
             fields: {
                 // * Validate the fields here based on your requirements
-
-                plPropertyType: {
+                plPodcast: {
                     validators: {
                         notEmpty: {
-                            message: 'Please select service type'
+                            message: 'Please Enter Podcast name'
                         }
                     }
                 },
-                plZipCode: {
+                plShortDescription: {
                     validators: {
                         notEmpty: {
-                            message: 'Please enter zip code'
+                            message: 'Please enter short description'
                         },
                         stringLength: {
                             min: 4,
@@ -267,34 +264,6 @@
                         }
                     }
                 },
-                plPropertyType: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please enter your service type'
-                        }
-                    }
-                },
-                plZipCode: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please enter your zip'
-                        }
-                    }
-                },
-                plCountry: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please enter your country'
-                        }
-                    }
-                },
-                plState: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please enter your state'
-                        }
-                    },
-                },
             },
             plugins: {
                 trigger: new FormValidation.plugins.Trigger(),
@@ -308,36 +277,11 @@
                 submitButton: new FormValidation.plugins.SubmitButton()
             }
         }).on('core.form.valid', function () {
-            validationStepper.next();
+            // validationStepper.next();
+            // document.getElementById('wizard-property-listing-form').submit();
+            submitFun();
         });
 
-        // Property Area
-        const FormValidation5 = FormValidation.formValidation(wizardPropertyListingFormStep5, {
-            fields: {
-                plAddress: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please enter your Address'
-                        }
-                    }
-                },
-                // * Validate the fields here based on your requirements
-            },
-            plugins: {
-                trigger: new FormValidation.plugins.Trigger(),
-                bootstrap5: new FormValidation.plugins.Bootstrap5({
-                    // Use this for enabling/changing valid/invalid class
-                    // eleInvalidClass: '',
-                    eleValidClass: '',
-                    rowSelector: '.col-md-12'
-                }),
-                autoFocus: new FormValidation.plugins.AutoFocus(),
-                submitButton: new FormValidation.plugins.SubmitButton()
-            }
-        }).on('core.form.valid', function () {
-            // Jump to the next step when all fields in the current step are valid
-            validationStepper.next();
-        });
 
         // Price Details
         const FormValidation6 = FormValidation.formValidation(wizardPropertyListingFormStep6, {
@@ -381,10 +325,6 @@
 
                     case 3:
                         FormValidation4.validate();
-                        break;
-
-                    case 4:
-                        FormValidation5.validate();
                         break;
 
                     case 5:
