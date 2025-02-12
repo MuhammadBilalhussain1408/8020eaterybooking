@@ -73,7 +73,8 @@
         const wizardPropertyListingFormStep1 = wizardPropertyListingForm.querySelector('#personal-details');
         const wizardPropertyListingFormStep2 = wizardPropertyListingForm.querySelector('#time-zone');
         const wizardPropertyListingFormStep3 = wizardPropertyListingForm.querySelector('#property-details');
-        const wizardPropertyListingFormStep4 = wizardPropertyListingForm.querySelector('#property-features');        const wizardPropertyListingFormStep6 = wizardPropertyListingForm.querySelector('#price-details');
+        const wizardPropertyListingFormStep4 = wizardPropertyListingForm.querySelector('#property-features');
+        const wizardPropertyListingFormStep5 = wizardPropertyListingForm.querySelector('#price-details');
         // Wizard next prev button
         const wizardPropertyListingNext = [].slice.call(wizardPropertyListingForm.querySelectorAll('.btn-next'));
         const wizardPropertyListingPrev = [].slice.call(wizardPropertyListingForm.querySelectorAll('.btn-prev'));
@@ -186,11 +187,6 @@
                         notEmpty: {
                             message: 'Please enter short description'
                         },
-                        stringLength: {
-                            min: 4,
-                            max: 10,
-                            message: 'The zip code must be more than 4 and less than 10 characters long'
-                        }
                     }
                 }
             },
@@ -277,14 +273,14 @@
                 submitButton: new FormValidation.plugins.SubmitButton()
             }
         }).on('core.form.valid', function () {
-            // validationStepper.next();
             // document.getElementById('wizard-property-listing-form').submit();
             submitFun();
+            validationStepper.next();
         });
 
 
         // Price Details
-        const FormValidation6 = FormValidation.formValidation(wizardPropertyListingFormStep6, {
+        const FormValidation5 = FormValidation.formValidation(wizardPropertyListingFormStep5, {
             fields: {
                 // * Validate the fields here based on your requirements
             },
@@ -327,8 +323,8 @@
                         FormValidation4.validate();
                         break;
 
-                    case 5:
-                        FormValidation6.validate();
+                    case 4:
+                        FormValidation5.validate();
                         break;
 
                     default:

@@ -481,7 +481,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <!-- Booking Confirmation -->
                                     <div id="price-details" class="content">
                                         <div class="row g-6" id="bookingDetails" style="display: none;">
