@@ -66,11 +66,12 @@ class BookingController extends Controller
         $start_time = $request->start_time;
         $end_time = $request->end_time;
         $podCastBooking = Booking::whereDate('booking_date', $selectedDate)
-        // ->where('start_time', $start_time)->where('end_time', $end_time)
+        ->where('start_time', $start_time)->where('end_time', $end_time)
         ->where('booking_room', 'Podcastroom')->first();
         $conferenceBooking = Booking::whereDate('booking_date', $selectedDate)
-        // ->where('start_time', $start_time)->where('end_time', $end_time)
+        ->where('start_time', $start_time)->where('end_time', $end_time)
         ->where('booking_room', 'Conferenceroom')->first();
+
         $podCastRoomRemainingTime = 0;
         $podCastRoomRemainingTimeSec = 0;
         $conferenceroomRoomRemainingTime = 0;
@@ -80,7 +81,7 @@ class BookingController extends Controller
             $endTime = Carbon::createFromFormat('H:i:s', $podCastBooking->end_time);
             $currentTime = Carbon::now()->format('H:i:s'); // Get current time
             $current = Carbon::createFromFormat('H:i:s', $currentTime);
-            if ($current->lt($endTime)) {
+            if ($current->lt($endTime) && $startTime->lt($current)) {
                 $podCastRoomRemainingTime = $current->diffInMinutes($endTime);
                 $podCastRoomRemainingTimeSec = $current->diffInSeconds($endTime);
             }
@@ -90,7 +91,7 @@ class BookingController extends Controller
             $endTime = Carbon::createFromFormat('H:i:s', $conferenceBooking->end_time);
             $currentTime = Carbon::now()->format('H:i:s'); // Get current time
             $current = Carbon::createFromFormat('H:i:s', $currentTime);
-            if ($current->lt($endTime)) {
+            if ($current->lt($endTime) && $startTime->lt($current)) {
                 $conferenceroomRoomRemainingTime = $current->diffInMinutes($endTime);
                 $conferenceroomRoomRemainingTimeSec = $current->diffInSeconds($endTime);
             }
