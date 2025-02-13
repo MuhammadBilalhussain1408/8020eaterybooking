@@ -941,11 +941,11 @@
 
                         slotDate.setHours(hours, minutes, 0, 0);
 
-                        // if (slotDate < now) {
-                        //     ele.disabled = true;
-                        //     ele.style.opacity = "0.5"; // Optional styling for disabled slots
-                        //     // ele.style.pointerEvents = "none"; // Prevent clicks
-                        // }
+                        if (slotDate < now) {
+                            ele.disabled = true;
+                            ele.style.opacity = "0.5"; // Optional styling for disabled slots
+                            // ele.style.pointerEvents = "none"; // Prevent clicks
+                        }
                     }
                     // Add an onclick event listener
                     ele.addEventListener('click', function() {

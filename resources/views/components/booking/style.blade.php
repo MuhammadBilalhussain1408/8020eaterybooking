@@ -636,7 +636,7 @@
     #countdown {
         box-shadow: 0 1px 2px 0 rgba(1, 1, 1, 0.4);
         width: 200px;
-        height: 108px;
+        height: 79px;
         text-align: center;
         background: #000000;
         border-radius: 5px;
@@ -660,6 +660,11 @@
 
     .color-full {
         background: #e1612e;
+        color: white;
+        font-size: 22px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        font-weight: bold;
     }
 
     .color-half {
