@@ -66,16 +66,18 @@ class BookingController extends Controller
         $start_time = $request->start_time;
         $end_time = $request->end_time;
         $podCastBooking = Booking::whereDate('booking_date', $selectedDate)
-        ->where('start_time', $start_time)->where('end_time', $end_time)
-        ->where('booking_room', 'Podcastroom')->first();
+            ->where('start_time', $start_time)->where('end_time', $end_time)
+            ->where('booking_room', 'Podcastroom')->first();
         $conferenceBooking = Booking::whereDate('booking_date', $selectedDate)
-        ->where('start_time', $start_time)->where('end_time', $end_time)
-        ->where('booking_room', 'Conferenceroom')->first();
-
+            ->where('start_time', $start_time)->where('end_time', $end_time)
+            ->where('booking_room', 'Conferenceroom')->first();
+        // dd($podCastBooking, $conferenceBooking);
         $podCastRoomRemainingTime = 0;
         $podCastRoomRemainingTimeSec = 0;
         $conferenceroomRoomRemainingTime = 0;
         $conferenceroomRoomRemainingTimeSec = 0;
+        $isPodCastBooked = false;
+        $isconferenceBooked = false;
         if ($podCastBooking) {
             $startTime = Carbon::createFromFormat('H:i:s', $podCastBooking->start_time);
             $endTime = Carbon::createFromFormat('H:i:s', $podCastBooking->end_time);
@@ -85,6 +87,7 @@ class BookingController extends Controller
                 $podCastRoomRemainingTime = $current->diffInMinutes($endTime);
                 $podCastRoomRemainingTimeSec = $current->diffInSeconds($endTime);
             }
+            $isPodCastBooked = true;
         }
         if ($conferenceBooking) {
             $startTime = Carbon::createFromFormat('H:i:s', $conferenceBooking->start_time);
@@ -95,14 +98,16 @@ class BookingController extends Controller
                 $conferenceroomRoomRemainingTime = $current->diffInMinutes($endTime);
                 $conferenceroomRoomRemainingTimeSec = $current->diffInSeconds($endTime);
             }
-            // dd($podCastBooking, $conferenceBooking, $current, $current->lt($endTime), $endTime->diffInMinutes($current));
+            $isconferenceBooked = true;
         }
 
         return response()->json([
             'cRemainingTime' => $conferenceroomRoomRemainingTime,
             'cRemainingTimeSec' => $conferenceroomRoomRemainingTimeSec,
             'pRemainingTime' => $podCastRoomRemainingTime,
-            'pRemainingTimeSec' => $podCastRoomRemainingTimeSec
+            'pRemainingTimeSec' => $podCastRoomRemainingTimeSec,
+            'isPodCastBooked' => $isPodCastBooked,
+            'isconferenceBooked' => $isconferenceBooked,
         ]);
     }
     /**
